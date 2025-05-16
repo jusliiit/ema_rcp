@@ -1,0 +1,9 @@
+pandas
+requests
+loguru
+sqlalchemy
+pytest
+boto3
+openpyxl
+aiohttp
+pyright
