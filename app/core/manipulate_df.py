@@ -1,6 +1,7 @@
 import re
 import pandas as pd
 from loguru import logger
+from datetime import datetime
 
 
 def clean_name(name: str) -> str:
@@ -70,8 +71,29 @@ def simplify_dataframe(
         df_light["Name"] = df_light["Name"].apply(clean_name)
         logger.success("Réussite de la simplification du fichier excel")
         df_light.to_json("list_of_medic.json", orient="records")
+
+        #Ajoute la colonne de date de génération
+        generation_date = datetime.now().strftime("%d-%m-%Y-%H-%M-%S")
+        df_light["Generated_on"] = generation_date
+
+        # Sauvegarde le fichier simplifié
+        df_light.to_csv("fichier_simplifie.csv", index=False)
+        logger.success("Réussite de la sauvegarde du fichier simplifié")
         return df_light
+    
     except Exception as exc:
         logger.exception(f"Erreur: {exc}")
         raise RuntimeError
 
+
+def get_generation_date_from_csv(csv_path):
+    try:
+        df = pd.read_csv(csv_path)
+        if "Generated_on" in df.columns:
+            return df["Generated_on"].iloc[0]
+        else:
+            logger.error("La colonne 'Generated on' n'existe pas dans le fichier CSV.")
+            return None
+    except Exception as e:
+        logger.exception(f"Erreur lors de la lecture du fichier CSV : {e}")
+        return None

@@ -32,11 +32,12 @@ async def download_index(
             with open(index_file_path, "wb") as f:
                 f.write(response.content)
                 logger.success(f"Téléchargement réussi depuis {url_index_file}")
+
                 df: pd.DataFrame = pd.read_excel(index_file_path, skiprows=8)
                 df_human: pd.DataFrame = df[df["Category"] == "Human"]
                 df_human = df_human[df_human["Medicine status"] == "Authorised"]
-                logger.success(f"Nombre de médicaments : {len(df_human)}")
-                return df_human
+
+                return df_human 
         else:
             logger.error(
                 f"Échec du téléchargement - statut {response.status_code} pour {url_index_file}"
