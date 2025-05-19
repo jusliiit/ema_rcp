@@ -72,7 +72,7 @@ def simplify_dataframe(
         logger.success("Réussite de la simplification du fichier excel")
         df_light.to_json("list_of_medic.json", orient="records")
 
-        #Ajoute la colonne de date de génération
+        # Ajoute la colonne de date de génération
         generation_date = datetime.now().strftime("%d-%m-%Y-%H-%M-%S")
         df_light["Generated_on"] = generation_date
 
