@@ -22,8 +22,9 @@ def detect_updated_rcp(
         on="Name",
         how="inner",
         suffixes=("_old", "_new"),
-    )
-    #Comparer les numéros de révision et creer la liste des médicaments mis à jour
+    ) ## useless
+    ## ranger par ordre alphabétique (sort) puis verifier que les noms sont pareil. Si pas pareil > telecharger le nouveau, Si pareil, tu compare les versions. Si version !=, tu ajoute quelques part
+    # Comparer les numéros de révision et creer la liste des médicaments mis à jour
     changed = merged_df[merged_df["Revision_nb_old"] != merged_df["Revision_nb_new"]]
     updated_list = []
     for _, row in changed.iterrows():
@@ -63,3 +64,4 @@ def update_rcp_pdfs(
         meds_to_update.append(med["Name"])
     logger.success(f"{len(meds_to_update)} médicaments à mettre à jour : {meds_to_update}")
     return meds_to_update
+    ## L'ancien tu le renomme _old, pour éviter de tout perdre

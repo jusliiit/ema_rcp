@@ -46,9 +46,10 @@ if old_csv:
 else:
     df_to_download = df_light
 
-#Télécharger les fichiers
-asyncio.run(download_files(langage=langage, df_light=df_light, nb_workers=2))
+# Télécharger les fichiers
+asyncio.run(download_files(langage=langage, df_light=df_to_download, nb_workers=2))
 
+##
 # Trouver tous les fichiers datés
 files = glob.glob("fichier_simplifie_*.csv")
 if files:
@@ -71,4 +72,4 @@ if files_2:
             logger.info("Suppression de {f}")
         except Exception as e:
             logger.error("Erreur lors de la suppression de {f}: {e}")
-
+## useless

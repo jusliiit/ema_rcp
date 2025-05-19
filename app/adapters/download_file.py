@@ -12,13 +12,12 @@ SPECIAL_CASES = {
     # Ajouter d'autres cas spéciaux ici si nécessaire
 }
 
+
 async def download_index(
     url_index_file: str,
     index_file_path: str,
 ) -> pd.DataFrame:
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
-    }
+    headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
     try:
         response: requests.Response = requests.get(url_index_file, headers=headers)
         while response.status_code == 429:
@@ -27,7 +26,7 @@ async def download_index(
             )
             time.sleep(10)
             response = requests.get(url_index_file, headers=headers)
-        
+
         if response.status_code == 200:
             with open(index_file_path, "wb") as f:
                 f.write(response.content)
@@ -37,7 +36,7 @@ async def download_index(
                 df_human: pd.DataFrame = df[df["Category"] == "Human"]
                 df_human = df_human[df_human["Medicine status"] == "Authorised"]
 
-                return df_human 
+                return df_human
         else:
             logger.error(
                 f"Échec du téléchargement - statut {response.status_code} pour {url_index_file}"
@@ -66,15 +65,14 @@ async def download_pdf(
         url_path = SPECIAL_CASES[medoc_name]
     else:
         url_path = f"{medoc_name.replace(' ', '-').lower()}-epar-product-information"
-    
+
     # Construire URL complète
     url = f"https://www.ema.europa.eu/{langage}/documents/product-information/{url_path}_{langage}.pdf"
-    
+
     # Construire le nom du fichier local (toujours medoc_name, espaces remplacés par des tirets)
     file_name = f"{medoc_name.replace(' ', '-')}.pdf"
     file_path = f"docs/{file_name}"
-   
-    
+
     if os.path.exists(file_path):
         logger.info(f"Le fichier {file_path} existe déjà. Téléchargement ignoré.")
         return
@@ -119,14 +117,18 @@ async def retry_failed_downloads(
     nb_workers: int,
 ) -> bool:
     if not os.path.exists(failed_urls_file):
-        logger.info("Aucun fichier failed_urls.txt trouvé. Aucun téléchargement à réessayer.")
+        logger.info(
+            "Aucun fichier failed_urls.txt trouvé. Aucun téléchargement à réessayer."
+        )
         return False
 
     with open(failed_urls_file, "r") as f:
         lines = [line.strip() for line in f.readlines() if line.strip()]
 
     if not lines:
-        logger.info("Le fichier failed_urls.txt est vide. Aucun téléchargement à réessayer.")
+        logger.info(
+            "Le fichier failed_urls.txt est vide. Aucun téléchargement à réessayer."
+        )
         return False
 
     sem = asyncio.Semaphore(nb_workers)
@@ -141,7 +143,11 @@ async def retry_failed_downloads(
             file_path = f"docs/{medoc_name}.pdf"
             # Construire un faux row pour passer à download_pdf (on peut juste créer un pd.Series avec Name)
             fake_row = pd.Series({"Name": medoc_name})
-            tasks.append(download_pdf("en", fake_row, 0, 0, file_path, session, sem, failed_urls_file))
+            tasks.append(
+                download_pdf(
+                    "en", fake_row, 0, 0, file_path, session, sem, failed_urls_file
+                )
+            )
         await asyncio.gather(*tasks)
 
     # Après réessai, nettoyer les URLs qui ont été téléchargées
@@ -182,7 +188,18 @@ async def download_files(
         for idx, row in enumerate(df_light.itertuples(), 1):
             medoc_name = row.Name
             file_path = f"docs/{medoc_name}.pdf"
-            tasks.append(download_pdf(langage, row, idx, total_count, file_path, session, sem, "failed_urls.txt"))
+            tasks.append(
+                download_pdf(
+                    langage,
+                    row,
+                    idx,
+                    total_count,
+                    file_path,
+                    session,
+                    sem,
+                    "failed_urls.txt",
+                )
+            )
         await asyncio.gather(*tasks)
 
     # Réessayer les téléchargements échoués tant que le fichier failed_urls.txt n'est pas vide
