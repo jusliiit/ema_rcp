@@ -61,3 +61,14 @@ if files:
         except Exception as e:
             logger.error("Erreur lors de la suppression de {f}: {e}")
 
+files_2 = glob.glob("log_*.log")
+if files_2:
+    files_2.sort(key=os.path.getmtime, reverse=True)
+    # Garde le plus récent, supprime les autres
+    for f in files_2[1:]:
+        try:
+            os.remove(f)
+            logger.info("Suppression de {f}")
+        except Exception as e:
+            logger.error("Erreur lors de la suppression de {f}: {e}")
+
