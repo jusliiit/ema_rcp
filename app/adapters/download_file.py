@@ -6,12 +6,12 @@ import asyncio
 import aiohttp
 import os
 import random
+import csv
 
 SPECIAL_CASES = {
     "Arikayce-liposomal": "arikayce-liposomal-product-information",
     # Ajouter d'autres cas spéciaux ici si nécessaire
 }
-
 
 async def download_index(
     url_index_file: str,
@@ -55,7 +55,7 @@ async def download_pdf(
     file_path: str,
     session: aiohttp.ClientSession,
     sem: asyncio.Semaphore,
-    failed_urls_file: str = "failed_urls.txt",
+    failed_urls_file: str = "failed_urls.csv",
 ) -> None:
     nb_retries = 5
     medoc_name = row.Name
@@ -71,7 +71,7 @@ async def download_pdf(
 
     # Construire le nom du fichier local (toujours medoc_name, espaces remplacés par des tirets)
     file_name = f"{medoc_name.replace(' ', '-')}.pdf"
-    file_path = f"docs/{file_name}"
+    file_path = f"ema_rcp/{file_name}"
 
     if os.path.exists(file_path):
         logger.info(f"Le fichier {file_path} existe déjà. Téléchargement ignoré.")
@@ -104,90 +104,43 @@ async def download_pdf(
                 f"Erreur: Nombre maximum de tentatives ({nb_retries}) atteint pour {medoc_name}"
             )
             # Ajouter l'URL échouée au fichier texte
-            with open(failed_urls_file, "a") as f:
-                f.write(f"{medoc_name} {url}\n")
+            write_failed_url(failed_urls_file, medoc_name, url)
         except Exception as e:
             logger.exception(f"Exception lors du téléchargement de {medoc_name} : {e}")
-            with open(failed_urls_file, "a") as f:
-                f.write(f"{medoc_name} {url}\n")
+            write_failed_url(failed_urls_file, medoc_name, url)
 
+def write_failed_url(failed_urls_file: str, medoc_name: str, url: str):
+    file_exists = os.path.exists(failed_urls_file)
+    with open(failed_urls_file, "a", newline="", encoding="utf-8") as f:
+        writer = csv.writer(f)
+        if not file_exists:
+            writer.writerow(["Name", "URL"])
+        writer.writerow([medoc_name, url])
 
 async def retry_failed_downloads(
     failed_urls_file: str,
-    nb_workers: int,
+    langage: str = "en",
+    nb_workers: int = 5,
 ) -> bool:
     if not os.path.exists(failed_urls_file):
-        logger.info(
-            "Aucun fichier failed_urls.txt trouvé. Aucun téléchargement à réessayer."
-        )
+        logger.info("Aucun fichier failed_urls.csv trouvé. Aucun téléchargement à réessayer.")
         return False
-
-    with open(failed_urls_file, "r") as f:
-        lines = [line.strip() for line in f.readlines() if line.strip()]
-
-    if not lines:
-        logger.info(
-            "Le fichier failed_urls.txt est vide. Aucun téléchargement à réessayer."
-        )
+    
+    df_failed = pd.read_csv(failed_urls_file)
+    if df_failed.empty: 
+        logger.info("Le fichier failed_urls.csv est vide. Aucun téléchargement échoué à réessayer.")
         return False
+     
+    total_count = len(df_failed)
+    os.makedirs("ema_rcp", exist_ok=True)
 
+#Téléchargement des fichiers échoués
     sem = asyncio.Semaphore(nb_workers)
     async with aiohttp.ClientSession() as session:
         tasks = []
-        for line in lines:
-            try:
-                medoc_name, url = line.split(maxsplit=1)
-            except ValueError:
-                logger.error(f"Ligne mal formée dans {failed_urls_file} : {line}")
-                continue
-            file_path = f"docs/{medoc_name}.pdf"
-            # Construire un faux row pour passer à download_pdf (on peut juste créer un pd.Series avec Name)
-            fake_row = pd.Series({"Name": medoc_name})
-            tasks.append(
-                download_pdf(
-                    "en", fake_row, 0, 0, file_path, session, sem, failed_urls_file
-                )
-            )
-        await asyncio.gather(*tasks)
-
-    # Après réessai, nettoyer les URLs qui ont été téléchargées
-    # Lecture du fichier failed_urls.txt et suppression des lignes pour lesquelles le fichier existe désormais
-    remaining = []
-    with open(failed_urls_file, "r") as f:
-        for line in f:
-            line = line.strip()
-            if not line:
-                continue
-            medoc_name = line.split(maxsplit=1)[0]
-            file_path = f"docs/{medoc_name}.pdf"
-            if not os.path.exists(file_path):
-                remaining.append(line)
-
-    if remaining:
-        with open(failed_urls_file, "w") as f:
-            f.write("\n".join(remaining) + "\n")
-        return True
-    else:
-        os.remove(failed_urls_file)
-        logger.info("Tous les téléchargements échoués ont été réessayés avec succès.")
-        logger.info("Téléchargements terminés.")
-        return False
-
-
-async def download_files(
-    langage: str,
-    df_light: pd.DataFrame,
-    nb_workers: int = 5,
-):
-    total_count = len(df_light)
-    os.makedirs("docs", exist_ok=True)
-
-    sem = asyncio.Semaphore(nb_workers)
-    async with aiohttp.ClientSession() as session:
-        tasks = []
-        for idx, row in enumerate(df_light.itertuples(), 1):
+        for idx, row in enumerate(df_failed.itertuples(), 1):
             medoc_name = row.Name
-            file_path = f"docs/{medoc_name}.pdf"
+            file_path = f"ema_rcp/{medoc_name}.pdf"
             tasks.append(
                 download_pdf(
                     langage,
@@ -197,11 +150,63 @@ async def download_files(
                     file_path,
                     session,
                     sem,
-                    "failed_urls.txt",
+                    failed_urls_file,
                 )
             )
         await asyncio.gather(*tasks)
 
-    # Réessayer les téléchargements échoués tant que le fichier failed_urls.txt n'est pas vide
-    while await retry_failed_downloads("failed_urls.txt", nb_workers):
+    clean_failed_urls(failed_urls_file)
+    if not os.path.exists(failed_urls_file):
+        logger.info("Tous les fichiers ont été téléchargés avec succès. Suppression du fichier failed_urls.csv.")
+        return False
+    df_failed = pd.read_csv(failed_urls_file)
+    return not df_failed.empty
+
+def clean_failed_urls(failed_urls_file: str):
+    if not os.path.exists(failed_urls_file):
+        logger.info("Aucun fichier failed_urls.csv trouvé. Aucun nettoyage à effectuer.")
+        return False
+    
+    df_failed = pd.read_csv(failed_urls_file)
+    df_failed = df_failed[~df_failed["Name"].apply(lambda medoc_name: os.path.exists(f"ema_rcp/{medoc_name}.pdf"))]
+
+#S'il est vide, il n'y a plus rien à réessayer, on le supprime 
+    if df_failed.empty:
+        os.remove(failed_urls_file)
+        logger.info("Tous les fichiers ont été téléchargés, suppression du fichier failed_urls.csv.")
+    else:
+        df_failed.to_csv(failed_urls_file, index=False)
+        logger.info(f"{len(df_failed)} fichiers restent à télécharger.")
+
+# Fonction principale pour télécharger les fichiers PDF
+async def download_files(
+    langage: str,
+    df_light: pd.DataFrame,
+    nb_workers: int = 5,
+):
+    total_count = len(df_light)
+    os.makedirs("ema_rcp", exist_ok=True)
+    failed_urls_file : str = "failed_urls.csv"
+
+    sem = asyncio.Semaphore(nb_workers)
+    async with aiohttp.ClientSession() as session:
+        tasks = []
+        for idx, row in enumerate(df_light.itertuples(), 1):
+            medoc_name = row.Name
+            file_path = f"ema_rcp/{medoc_name}.pdf"
+            tasks.append(
+                download_pdf(
+                    langage,
+                    row,
+                    idx,
+                    total_count,
+                    file_path,
+                    session,
+                    sem,
+                    failed_urls_file,
+                )
+            )
+        await asyncio.gather(*tasks)
+
+    while await retry_failed_downloads("failed_urls.csv", langage, nb_workers):
         logger.info("Nouvelle tentative pour les fichiers échoués...")
