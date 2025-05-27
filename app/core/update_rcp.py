@@ -1,67 +1,72 @@
-import os
-import pandas as pd 
+import pandas as pd
+import os 
+import shutil 
+import asyncio 
+import aiohttp
+from adapters.download_file import download_pdf
 from loguru import logger
 
-#Detecter les médicaments mis à jour entre deux fichiers CSV
-def detect_updated_rcp(
-        old_csv_path: str, 
-        new_csv_path: str) -> list[dict]:
-    logger.info("Début détection des médicaments mis à jour entre les fichiers CSV")
-    try:
-        old_df = pd.read_csv(old_csv_path)
-        new_df = pd.read_csv(new_csv_path)
-        logger.success(f"Fichiers CSV chargés : '{old_csv_path}', '{new_csv_path}'")
-    except Exception as e:
-        logger.exception(f"Erreur lors de la lecture des fichiers CSV : {e}")
-        raise
+def rename_update_rcp(
+        df_today_path: str = "archives/fichier_simplifie.csv",
+        df_yesterday_path: str = "archives/fichier_simplifie_{today}.csv"
+):
+    if not df_yesterday_path or not os.path.exists(df_yesterday_path):
+        logger.error(f"Aucun fichier de la veille trouvé, il n'y a rien à comparer.")
+        return
+    
+    df_today = pd.read_csv(df_today_path).set_index("Name")
+    df_yesterday = pd.read_csv(df_yesterday_path).set_index("Name")
 
-    #Garder uniquement les colonnes nécessaires
-    merged_df = pd.merge(
-        old_df[["Name", "Revision_nb"]],
-        new_df[["Name", "Revision_nb"]],
-        on="Name",
-        how="inner",
-        suffixes=("_old", "_new"),
-    ) ## useless
-    ## ranger par ordre alphabétique (sort) puis verifier que les noms sont pareil. Si pas pareil > telecharger le nouveau, Si pareil, tu compare les versions. Si version !=, tu ajoute quelques part
-    # Comparer les numéros de révision et creer la liste des médicaments mis à jour
-    changed = merged_df[merged_df["Revision_nb_old"] != merged_df["Revision_nb_new"]]
-    updated_list = []
-    for _, row in changed.iterrows():
-        updated_list.append(
-            {
-                "Name": row["Name"],
-                "Revision_nb": row["Revision_nb_new"],
-            })
-    logger.info(f"{len(updated_list)} médicaments détectés comme mis à jour")
-    return updated_list
-        
-#Supprimer l'ancien PDF des médicaments à mettre à jour
-def delete_old_pdf(med_name: str, docs_dir: str = "docs"):
-    file_name = f"{med_name.replace(' ', '-')}.pdf"
-    file_path = os.path.join(docs_dir, file_name)
-    logger.info(f"Tentative de suppression du PDF : {file_path}")
-    try:
-        if os.path.exists(file_path):
-            os.remove(file_path)
-            logger.info(f"Ancien PDF supprimé : {file_path}")
-        else:
-            logger.info(f"Aucun PDF à supprimer pour : {file_name}")
-    except Exception as e:
-        logger.exception(f"Erreur lors de la suppression du fichier {file_path} : {e}")
+    for medoc_name in df_today.index:
+        if medoc_name in df_yesterday.index: 
+            rev_today = df_today.loc[medoc_name, "Revision_nb"]
+            rev_yesterday = df_yesterday.loc[medoc_name, "Revision_nb"]
+            if rev_today != rev_yesterday:
+                pdf_path = f"ema_rcp/{medoc_name}.pdf"
+                pdf_old_path = f"ema_rcp/{medoc_name}_old.pdf"
+                if os.path.exists(pdf_path):
+                    shutil.move(pdf_path, pdf_old_path)
+                    logger.info(f"Le fichier {medoc_name}.pdf a été renommé en {medoc_name}_old.pdf en raison d'une mise à jour.")
 
-def update_rcp_pdfs(
-    old_csv_path: str,
-    new_csv_path: str,
-    docs_dir: str = "docs"
-) -> list[str]:
+async def update_rcp(
+        df_today : pd.DataFrame, 
+        langage: str = "en",
+        nb_workers: int = 5,
+        failed_urls_file: str = "failed_urls.csv",
+):
 
-    logger.info("Début de la mise à jour des RCP PDFs")
-    updated_meds = detect_updated_rcp(old_csv_path, new_csv_path)
-    meds_to_update = []
-    for med in updated_meds:
-        delete_old_pdf(med["Name"], docs_dir)
-        meds_to_update.append(med["Name"])
-    logger.success(f"{len(meds_to_update)} médicaments à mettre à jour : {meds_to_update}")
-    return meds_to_update
-    ## L'ancien tu le renomme _old, pour éviter de tout perdre
+    sem = asyncio.Semaphore(nb_workers)
+    nb_updates = 0 
+
+    async with aiohttp.ClientSession() as session:
+        tasks = []
+        for medoc_name in df_today["Name"]:
+            pdf_old_path = f"ema_rcp/{medoc_name}_old.pdf"
+            pdf_path = f"ema_rcp/{medoc_name}.pdf"
+            if os.path.exists(pdf_old_path):
+                row = df_today[df_today["Name"] == medoc_name].iloc[0]
+                tasks.append(
+                    download_pdf(
+                        langage,
+                        row,
+                        medoc_name,
+                        len(df_today),
+                        pdf_path,
+                        session,
+                        sem,
+                        failed_urls_file
+                    )
+                )
+        await asyncio.gather(*tasks)
+
+    for medoc_name in df_today["Name"]:
+        pdf_path = f"ema_rcp/{medoc_name}.pdf"
+        pdf_old_path = f"ema_rcp/{medoc_name}_old.pdf"
+
+        if os.path.exists(pdf_path) and os.path.exists(pdf_old_path):
+            os.remove(pdf_old_path)
+            logger.info(f"Le RCP du {medoc_name} est mis à jour, il est supprimé.")
+
+    if nb_updates == 0:
+        logger.info("Aucune mise à jour de RCP n'a été effectuée.")
+
