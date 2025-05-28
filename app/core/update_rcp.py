@@ -7,15 +7,13 @@ from adapters.download_file import download_pdf
 from loguru import logger
 from datetime import datetime
 
-
-
 def rename_update_rcp(
         df_today_path: str = "archives/fichier_simplifie.csv",
         df_yesterday_path: str = None
 ): 
-    today2 = datetime.now().strftime('%d-%m-%Y')
+    today = datetime.now().strftime('%d-%m-%Y')
     if df_yesterday_path is None:
-        df_yesterday_path = f"archives/fichier_simplifie_{today2}.csv"
+        df_yesterday_path = f"archives/fichier_simplifie_{today}.csv"
     if not df_yesterday_path or not os.path.exists(df_yesterday_path):
         logger.error(f"Aucun fichier de la veille trouvé, il n'y a rien à comparer.")
         return
@@ -71,7 +69,7 @@ async def update_rcp(
 
         if os.path.exists(pdf_path) and os.path.exists(pdf_old_path):
             os.remove(pdf_old_path)
-            logger.info(f"Le RCP du {medoc_name} est mis à jour, il est supprimé.")
+            logger.info(f"Le RCP du {medoc_name} est mis à jour, l'ancien RCP est supprimé.")
 
     if nb_updates == 0:
         logger.info("Aucune mise à jour de RCP n'a été effectuée.")
