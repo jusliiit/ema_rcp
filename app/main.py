@@ -6,8 +6,9 @@ from core.manipulate_df import simplify_dataframe
 from core.update_rcp import rename_update_rcp, update_rcp
 
 # Configurer le logger
-today: str = datetime.now().strftime("%d-%m-%Y_%H-%M-%S")
-logger.add(f"log/log_{today}.log", rotation="500 KB", level="INFO")  # Log
+today_log: str = datetime.now().strftime("%d-%m-%Y_%H-%M-%S")
+today: str = datetime.now().strftime("%d-%m-%Y")
+logger.add(f"log/log_{today_log}.log", rotation="500 KB", level="INFO")  # Log
 
 url_index_file: str = (
     "https://www.ema.europa.eu/en/documents/report/medicines-output-medicines-report_en.xlsx"  # noqa:E501

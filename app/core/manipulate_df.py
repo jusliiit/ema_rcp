@@ -62,11 +62,11 @@ def simplify_dataframe(
         df_light.to_json("list_of_medic.json", orient="records")
 
 # Avant d'écraser, archive l'ancien fichier s'il existe
-        today = datetime.now().strftime('%d-%m-%Y_%H-%M-%S')
+        today: str = datetime.now().strftime("%d-%m-%Y")
         os.makedirs("archives", exist_ok=True)
         if os.path.exists("archives/fichier_simplifie.csv"):
             shutil.copy("archives/fichier_simplifie.csv", f"archives/fichier_simplifie_{today}.csv")
-        
+            
         df_light.to_csv("archives/fichier_simplifie.csv", index=False)
         logger.success("Réussite de la sauvegarde du fichier simplifié")
         return df_light

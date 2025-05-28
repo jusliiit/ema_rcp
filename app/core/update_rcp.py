@@ -5,11 +5,17 @@ import asyncio
 import aiohttp
 from adapters.download_file import download_pdf
 from loguru import logger
+from datetime import datetime
+
+
 
 def rename_update_rcp(
         df_today_path: str = "archives/fichier_simplifie.csv",
-        df_yesterday_path: str = "archives/fichier_simplifie_{today}.csv"
-):
+        df_yesterday_path: str = None
+): 
+    today2 = datetime.now().strftime('%d-%m-%Y')
+    if df_yesterday_path is None:
+        df_yesterday_path = f"archives/fichier_simplifie_{today2}.csv"
     if not df_yesterday_path or not os.path.exists(df_yesterday_path):
         logger.error(f"Aucun fichier de la veille trouvé, il n'y a rien à comparer.")
         return

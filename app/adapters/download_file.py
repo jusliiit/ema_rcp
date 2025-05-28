@@ -34,9 +34,9 @@ async def download_index(
 
                 df: pd.DataFrame = pd.read_excel(index_file_path, skiprows=8)
                 df_human: pd.DataFrame = df[df["Category"] == "Human"]
-                df_human = df_human[df_human["Medicine status"] == "Authorised"]
+                df_edited : pd.DataFrame = df_human[df_human["Medicine status"] == "Authorised"]
 
-                return df_human
+                return df_edited
         else:
             logger.error(
                 f"Échec du téléchargement - statut {response.status_code} pour {url_index_file}"
@@ -118,7 +118,7 @@ def write_failed_url(failed_urls_file: str, medoc_name: str, url: str):
         writer.writerow([medoc_name, url])
 
 async def retry_failed_downloads(
-    failed_urls_file: str,
+    failed_urls_file: str = "failed_urls.csv",
     langage: str = "en",
     nb_workers: int = 5,
 ) -> bool:
@@ -182,7 +182,7 @@ def clean_failed_urls(failed_urls_file: str):
 async def download_files(
     langage: str,
     df_light: pd.DataFrame,
-    nb_workers: int = 5,
+    nb_workers: int,
 ):
     total_count = len(df_light)
     os.makedirs("ema_rcp", exist_ok=True)
