@@ -10,7 +10,7 @@ import csv
 
 SPECIAL_CASES = {
     "Arikayce-liposomal": "arikayce-liposomal-product-information",
-    # Ajouter d'autres cas spéciaux ici si nécessaire
+    # Ajouter d'autres cas spéciaux ici si nécessaire 
 }
 
 async def download_index(
@@ -117,6 +117,7 @@ def write_failed_url(failed_urls_file: str, medoc_name: str, url: str):
             writer.writerow(["Name", "URL"])
         writer.writerow([medoc_name, url])
 
+# Fonction pour réessayer les téléchargements échoués
 async def retry_failed_downloads(
     failed_urls_file: str = "failed_urls.csv",
     langage: str = "en",
@@ -134,7 +135,7 @@ async def retry_failed_downloads(
     total_count = len(df_failed)
     os.makedirs("ema_rcp", exist_ok=True)
 
-#Téléchargement des fichiers échoués
+#Téléchargement des fichiers échoués 
     sem = asyncio.Semaphore(nb_workers)
     async with aiohttp.ClientSession() as session:
         tasks = []
@@ -170,7 +171,7 @@ def clean_failed_urls(failed_urls_file: str):
     df_failed = pd.read_csv(failed_urls_file)
     df_failed = df_failed[~df_failed["Name"].apply(lambda medoc_name: os.path.exists(f"ema_rcp/{medoc_name}.pdf"))]
 
-#S'il est vide, il n'y a plus rien à réessayer, on le supprime 
+#S'il est vide, il n'y a plus rien à réessayer, on le supprime  
     if df_failed.empty:
         os.remove(failed_urls_file)
         logger.info("Tous les fichiers ont été téléchargés, suppression du fichier failed_urls.csv.")
@@ -178,7 +179,7 @@ def clean_failed_urls(failed_urls_file: str):
         df_failed.to_csv(failed_urls_file, index=False)
         logger.info(f"{len(df_failed)} fichiers restent à télécharger.")
 
-# Fonction principale pour télécharger les fichiers PDF
+# Fonction principale pour télécharger les fichiers PDF 
 async def download_files(
     langage: str,
     df_light: pd.DataFrame,

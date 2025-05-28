@@ -7,6 +7,7 @@ from adapters.download_file import download_pdf
 from loguru import logger
 from datetime import datetime
 
+#fonction pour renommer les fichiers RCP mis à jour
 def rename_update_rcp(
         df_today_path: str = "archives/fichier_simplifie.csv",
         df_yesterday_path: str = None

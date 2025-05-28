@@ -31,11 +31,12 @@ def clean_name(name: str) -> str:
     words_to_remove = {'a', 'the', 'of', 'and', 'in', 'on'}
     words = [w for w in name_edit.split() if w not in words_to_remove]
 
-    # Remettre en forme avec des tirets
+    # Remettre en forme avec des tirets 
     name_edit = '-'.join(words)
 
     return name_edit
 
+# Fonction pour simplifier le DataFrame
 def simplify_dataframe(
     df: pd.DataFrame,
 ) -> pd.DataFrame:
@@ -61,7 +62,7 @@ def simplify_dataframe(
         logger.success("Réussite de la simplification du fichier excel")
         df_light.to_json("list_of_medic.json", orient="records")
 
-# Avant d'écraser, archive l'ancien fichier s'il existe
+# Avant d'écraser, archive l'ancien fichier s'il existe 
         today: str = datetime.now().strftime("%d-%m-%Y")
         os.makedirs("archives", exist_ok=True)
         if os.path.exists("archives/fichier_simplifie.csv"):

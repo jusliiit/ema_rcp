@@ -27,7 +27,7 @@ rename_update_rcp(
     df_today_path="archives/fichier_simplifie.csv",
     df_yesterday_path=f"archives/fichier_simplifie_{today}.csv"
 )
-# Télécharger les fichiers
+# Télécharger les fichiers PDF
 asyncio.run(download_files(langage, df_light, nb_workers=5))
 
 # Mettre à jour les RCP
