@@ -3,21 +3,19 @@ import os
 import shutil 
 import asyncio 
 import aiohttp
-from adapters.download_file import download_pdf
+from adapters.download_file import download_pdf, retry_failed_downloads
 from loguru import logger
 from datetime import datetime
 
 #fonction pour renommer les fichiers RCP mis à jour
 def rename_update_rcp(
         df_today_path: str = "archives/fichier_simplifie.csv",
-        df_yesterday_path: str = None
+        df_yesterday_path: str = "archives/fichier_simplifie_{today}.csv"
 ): 
     today = datetime.now().strftime('%d-%m-%Y')
-    if df_yesterday_path is None:
-        df_yesterday_path = f"archives/fichier_simplifie_{today}.csv"
     if not df_yesterday_path or not os.path.exists(df_yesterday_path):
         logger.error(f"Aucun fichier de la veille trouvé, il n'y a rien à comparer.")
-        return
+        return None
     
     df_today = pd.read_csv(df_today_path).set_index("Name")
     df_yesterday = pd.read_csv(df_yesterday_path).set_index("Name")
@@ -27,18 +25,17 @@ def rename_update_rcp(
             rev_today = df_today.loc[medoc_name, "Revision_nb"]
             rev_yesterday = df_yesterday.loc[medoc_name, "Revision_nb"]
             if rev_today != rev_yesterday:
-                pdf_path = f"ema_rcp/{medoc_name}.pdf"
-                pdf_old_path = f"ema_rcp/{medoc_name}_old.pdf"
-                if os.path.exists(pdf_path):
-                    shutil.move(pdf_path, pdf_old_path)
+                file_path = f"ema_rcp/{medoc_name}.pdf"
+                file_old_path = f"ema_rcp/{medoc_name}_old.pdf"
+                if os.path.exists(file_path):
+                    shutil.move(file_path, file_old_path)
                     logger.info(f"Le fichier {medoc_name}.pdf a été renommé en {medoc_name}_old.pdf en raison d'une mise à jour.")
 
 async def update_rcp(
         df_today : pd.DataFrame, 
         langage: str = "en",
-        nb_workers: int = 5,
-        failed_urls_file: str = "failed_urls.csv",
-):
+        nb_workers: int = 3,
+        failed_urls_file: str = "failed_urls.csv",)-> int:
 
     sem = asyncio.Semaphore(nb_workers)
     nb_updates = 0 
@@ -46,9 +43,9 @@ async def update_rcp(
     async with aiohttp.ClientSession() as session:
         tasks = []
         for medoc_name in df_today["Name"]:
-            pdf_old_path = f"ema_rcp/{medoc_name}_old.pdf"
-            pdf_path = f"ema_rcp/{medoc_name}.pdf"
-            if os.path.exists(pdf_old_path):
+            file_old_path = f"ema_rcp/{medoc_name}_old.pdf"
+            file_path = f"ema_rcp/{medoc_name}.pdf"
+            if os.path.exists(file_old_path):
                 row = df_today[df_today["Name"] == medoc_name].iloc[0]
                 tasks.append(
                     download_pdf(
@@ -56,22 +53,28 @@ async def update_rcp(
                         row,
                         medoc_name,
                         len(df_today),
-                        pdf_path,
+                        file_path,
                         session,
                         sem,
                         failed_urls_file
                     )
                 )
+                nb_updates += 1 
+                logger.info(f"Le RCP du {medoc_name} est mis à jour, il restent {nb_updates} mises à jour à effectuer.")
         await asyncio.gather(*tasks)
 
-    for medoc_name in df_today["Name"]:
-        pdf_path = f"ema_rcp/{medoc_name}.pdf"
-        pdf_old_path = f"ema_rcp/{medoc_name}_old.pdf"
+    while await retry_failed_downloads(failed_urls_file, langage, nb_workers):
+        logger.info("Nouvelle tentative de téléchargement des fichiers échoués.")
 
-        if os.path.exists(pdf_path) and os.path.exists(pdf_old_path):
-            os.remove(pdf_old_path)
-            logger.info(f"Le RCP du {medoc_name} est mis à jour, l'ancien RCP est supprimé.")
+    for medoc_name in df_today["Name"]:
+        file_path = f"ema_rcp/{medoc_name}.pdf"
+        file_old_path = f"ema_rcp/{medoc_name}_old.pdf"
+
+        if os.path.exists(file_path) and os.path.exists(file_old_path):
+            os.remove(file_old_path)
+            logger.info(f"L'ancien RCP du {medoc_name} est supprimé.")
 
     if nb_updates == 0:
         logger.info("Aucune mise à jour de RCP n'a été effectuée.")
 
+    return nb_updates

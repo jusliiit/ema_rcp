@@ -16,7 +16,7 @@ url_index_file: str = (
 index_file_path: str = "index_file.xlsx"
 langage: str = "en"
 
-# Télécharger le fichier d'index
+# Télécharger le fichier d'index des médicaments
 df_edited = asyncio.run(download_index(url_index_file, index_file_path))
 
 # Simplifier le dataframe
@@ -27,9 +27,8 @@ rename_update_rcp(
     df_today_path="archives/fichier_simplifie.csv",
     df_yesterday_path=f"archives/fichier_simplifie_{today}.csv"
 )
-# Télécharger les fichiers PDF
-asyncio.run(download_files(langage, df_light, nb_workers=5))
-
 # Mettre à jour les RCP
 asyncio.run(update_rcp(df_light, langage, nb_workers=5, failed_urls_file="failed_urls.csv"))
 
+# Télécharger les fichiers PDF
+asyncio.run(download_files(langage, df_light, nb_workers=5))

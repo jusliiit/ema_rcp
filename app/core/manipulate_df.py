@@ -75,4 +75,3 @@ def simplify_dataframe(
     except Exception as exc:
         logger.exception(f"Erreur: {exc}")
         raise RuntimeError
-
