@@ -39,6 +39,8 @@ def clean_name(name: str) -> str:
 # Fonction pour simplifier le DataFrame
 def simplify_dataframe(
     df: pd.DataFrame,
+    path_csv: str,
+    path_json: str,
 ) -> pd.DataFrame:
     try:
         columns_to_keep: list[str] = [
@@ -60,15 +62,15 @@ def simplify_dataframe(
         # Correction du nom
         df_light["Name"] = df_light["Name"].apply(clean_name)
         logger.success("Réussite de la simplification du fichier excel")
-        df_light.to_json("list_of_medic.json", orient="records")
-
+        df_light.to_json(path_json, orient="records")
+    
 # Avant d'écraser, archive l'ancien fichier s'il existe 
         today: str = datetime.now().strftime("%d-%m-%Y")
-        os.makedirs("archives", exist_ok=True)
-        if os.path.exists("archives/fichier_simplifie.csv"):
-            shutil.copy("archives/fichier_simplifie.csv", f"archives/fichier_simplifie_{today}.csv")
+        os.makedirs(os.path.dirname(path_csv), exist_ok=True)
+        if os.path.exists(path_csv):
+            shutil.copy(path_csv, f"{path_csv}_{today}.csv")
             
-        df_light.to_csv("archives/fichier_simplifie.csv", index=False)
+        df_light.to_csv(path_csv, index=False)
         logger.success("Réussite de la sauvegarde du fichier simplifié")
         return df_light
     

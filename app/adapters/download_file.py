@@ -30,8 +30,9 @@ async def download_index(
                 logger.success(f"Téléchargement réussi depuis {url_index_file}")
                 df: pd.DataFrame = pd.read_excel(index_file_path, skiprows=8)
                 df_human: pd.DataFrame = df[df["Category"] == "Human"]
-                df_edited : pd.DataFrame = df_human[df_human["Medicine status"] == "Authorised"]
-                return df_edited
+                df_authorised : pd.DataFrame = df_human[df_human["Medicine status"] == "Authorised"]
+                df_withdrawn: pd.DataFrame = df_human[df_human["Medicine status"].isin(["Withdrawn", "Withdrawn from rolling review"])]
+                return df_authorised, df_withdrawn 
         else:
             logger.error(f"Échec du téléchargement - statut {response.status_code} pour {url_index_file}")
             raise RuntimeError
@@ -43,11 +44,14 @@ async def download_index(
 async def download_pdf(
         langage: str,
         row: pd.Series,
-        index: int,total_count: int,
+        index: int,
+        total_count: int,
+        dl_path : str,
         file_path: str,
         session: aiohttp.ClientSession,
         sem: asyncio.Semaphore,
-        failed_urls_file: str = "failed_urls.csv") -> None:
+        failed_urls_file: str
+) -> None:
     nb_retries = 5
     medoc_name = row.Name
     echec = False
@@ -59,7 +63,7 @@ async def download_pdf(
 
     url = f"https://www.ema.europa.eu/{langage}/documents/product-information/{url_path}_{langage}.pdf"
     file_name = f"{medoc_name.replace(' ', '-')}.pdf"
-    file_path = f"ema_rcp/{file_name}"
+    file_path = f"{dl_path}/{file_name}"
 
     if os.path.exists(file_path):
         logger.info(f"Le fichier {file_path} existe déjà. Téléchargement ignoré.")
@@ -104,8 +108,10 @@ async def download_pdf(
                 df_echec_final.to_csv(failed_urls_file, index=False)
         
 async def retry_failed_downloads(
-    failed_urls_file: str = "failed_urls.csv",
+    dl_path: str,
+    failed_urls_file: str,
     langage: str = "en",
+    
     nb_workers: int = 3) -> bool:
 
     if not os.path.exists(failed_urls_file):
@@ -118,7 +124,7 @@ async def retry_failed_downloads(
         return False
      
     total_count = len(df_failed)
-    os.makedirs("ema_rcp", exist_ok=True)
+    os.makedirs(dl_path, exist_ok=True)
 
 #Téléchargement des fichiers échoués 
     sem = asyncio.Semaphore(nb_workers)
@@ -126,7 +132,7 @@ async def retry_failed_downloads(
         tasks = []
         for idx, row in enumerate(df_failed.itertuples(), 1):
             medoc_name = row.Name
-            file_path = f"ema_rcp/{medoc_name}.pdf"
+            file_path = f"{dl_path}/{medoc_name}.pdf"
             tasks.append(download_pdf(
                     langage,
                     row,
@@ -139,7 +145,7 @@ async def retry_failed_downloads(
         await asyncio.gather(*tasks)
 
     df_failed = pd.read_csv(failed_urls_file)
-    df_failed = df_failed[~df_failed["Name"].apply(lambda medoc_name: os.path.exists(f"ema_rcp/{medoc_name}.pdf"))]
+    df_failed = df_failed[~df_failed["Name"].apply(lambda medoc_name: os.path.exists(f"{dl_path}/{medoc_name}.pdf"))]
  
     if df_failed.empty:
         os.remove(failed_urls_file)
@@ -157,21 +163,34 @@ async def retry_failed_downloads(
 async def download_files(
     langage: str,
     df_light: pd.DataFrame,
-    nb_workers: int,):
+    dl_path: str,
+    nb_workers: int,
+    failed_urls_file: str
+    ):
     
     total_count = len(df_light)
-    os.makedirs("ema_rcp", exist_ok=True)
-    failed_urls_file : str = "failed_urls.csv"
+    os.makedirs(dl_path, exist_ok=True)
 
     sem = asyncio.Semaphore(nb_workers)
     async with aiohttp.ClientSession() as session:
         tasks = []
         for idx, row in enumerate(df_light.itertuples(), 1):
             medoc_name = row.Name
-            file_path = f"ema_rcp/{medoc_name}.pdf"
+            file_path = f"{dl_path}/{medoc_name}.pdf"
             tasks.append(
-                download_pdf(langage,row,idx,total_count,file_path,session,sem,failed_urls_file,))
+                download_pdf(
+                    langage,
+                    row,
+                    idx,
+                    total_count,
+                    dl_path,
+                    file_path,
+                    session,
+                    sem,
+                    failed_urls_file 
+                )
+            )
         await asyncio.gather(*tasks)
 
-    while await retry_failed_downloads("failed_urls.csv", langage, nb_workers):
+    while await retry_failed_downloads(failed_urls_file, langage, nb_workers):
         logger.info("Nouvelle tentative pour les fichiers échoués...")
