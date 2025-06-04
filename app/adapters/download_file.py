@@ -16,7 +16,9 @@ async def download_index(
     url_index_file: str,
     index_file_path: str,
 ) -> pd.DataFrame:
-    headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+    headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+    "Accept-Language": "en-US,en;q=0.5"}
     try:
         response: requests.Response = requests.get(url_index_file, headers=headers)
         while response.status_code == 429:
@@ -86,10 +88,20 @@ async def download_pdf(
                         sleeptime = random.randint(1, 15)
                         await asyncio.sleep(sleeptime)
                         retries += 1
-                    else:
-                        logger.error(f"Échec {resp.status} pour {medoc_name}")
-                        echec = True
-                        break
+                    elif resp.status == 404:
+                        logger.error(f"Échec 404 pour {medoc_name}")
+                        not_found_file = "not_found_urls.csv"
+                        df_404 = pd.DataFrame([[medoc_name, url]], columns=["Name", "Url"])
+                        echec = False
+                        if os.path.exists(not_found_file):
+                            df_404_existing = pd.read_csv(not_found_file)
+                        else:
+                            df_404_existing = pd.DataFrame(columns=["Name", "Url"])
+                        if not (df_404_existing["Name"] == medoc_name).any():
+                            df_404_final = pd.concat([df_404_existing, df_404], ignore_index=True)
+                            df_404_final.to_csv(not_found_file, index=False)
+                            
+                        return
             if not echec:
                 logger.error(f"Erreur: Nombre maximum de tentatives ({nb_retries}) atteint pour {medoc_name}")
                 echec = True
@@ -108,11 +120,11 @@ async def download_pdf(
                 df_echec_final.to_csv(failed_urls_file, index=False)
         
 async def retry_failed_downloads(
+    failed_urls_file: str, 
     dl_path: str,
-    failed_urls_file: str,
     langage: str = "en",
-    
-    nb_workers: int = 3) -> bool:
+    nb_workers: int = 3,
+    not_found_file: str = "not_found_urls.csv") -> bool:
 
     if not os.path.exists(failed_urls_file):
         logger.info("Aucun fichier failed_urls.csv trouvé. Aucun téléchargement à réessayer.")
@@ -138,14 +150,22 @@ async def retry_failed_downloads(
                     row,
                     idx,
                     total_count,
+                    dl_path,
                     file_path,
                     session,
                     sem,
                     failed_urls_file,))
         await asyncio.gather(*tasks)
 
-    df_failed = pd.read_csv(failed_urls_file)
-    df_failed = df_failed[~df_failed["Name"].apply(lambda medoc_name: os.path.exists(f"{dl_path}/{medoc_name}.pdf"))]
+    if os.path.exists(failed_urls_file):
+        df_failed = pd.read_csv(failed_urls_file)
+    # 1. Retirer ceux qui ont été téléchargés avec succès
+        df_failed = df_failed[~df_failed["Name"].apply(lambda medoc_name: os.path.exists(f"{dl_path}/{medoc_name}.pdf"))]
+    # 2. Retirer ceux qui sont dans le fichier des 404
+    if os.path.exists(not_found_file):
+        df_404 = pd.read_csv(not_found_file)
+        df_failed = df_failed[~df_failed["Name"].isin(df_404["Name"])]
+    df_failed.to_csv(failed_urls_file, index=False)
  
     if df_failed.empty:
         os.remove(failed_urls_file)
@@ -192,5 +212,5 @@ async def download_files(
             )
         await asyncio.gather(*tasks)
 
-    while await retry_failed_downloads(failed_urls_file, langage, nb_workers):
+    while await retry_failed_downloads(failed_urls_file, dl_path, langage, nb_workers, not_found_file = "not_found_file"):
         logger.info("Nouvelle tentative pour les fichiers échoués...")

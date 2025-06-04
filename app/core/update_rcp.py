@@ -7,12 +7,13 @@ from adapters.download_file import download_pdf, retry_failed_downloads
 from loguru import logger
 from datetime import datetime
 
+today = datetime.now().strftime('%d-%m-%Y')
+
 #fonction pour renommer les fichiers RCP mis à jour
 def rename_update_rcp(
         df_authorised_today_path: str = "archives_authorised/fichier_simplifie.csv",
-        df_authorised_yesterday_path: str = "archives_authorised/fichier_simplifie_{today}.csv"
+        df_authorised_yesterday_path: str = f"archives_authorised/fichier_simplifie_{today}.csv"
 ): 
-    today = datetime.now().strftime('%d-%m-%Y')
     if not df_authorised_yesterday_path or not os.path.exists(df_authorised_yesterday_path):
         logger.error(f"Aucun fichier de la veille trouvé, il n'y a rien à comparer.")
         return None

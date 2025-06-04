@@ -25,8 +25,8 @@ df_withdrawn_light = simplify_dataframe(df_withdrawn, path_csv = "archives_withd
 
 # Renommer les fichiers RCP mis à jour
 rename_update_rcp(
-    df_authorised_today_path="archives_authorised/fichier_simplifie.csv",
-    df_authorised_yesterday_path=f"archives_authorised/fichier_simplifie_{today}.csv"
+    df_authorised_today_path = "archives_authorised/fichier_simplifie.csv",
+    df_authorised_yesterday_path = f"archives_authorised/fichier_simplifie_{today}.csv"
 )
 # Mettre à jour les RCP
 asyncio.run(update_rcp(df_authorised_light, langage, nb_workers=5, failed_urls_file="failed_urls_authorised.csv"))
