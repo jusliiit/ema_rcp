@@ -6,8 +6,12 @@ import shutil
 import os
 
 def clean_name(name: str) -> str:
+
+    # Remplacer les apostrophes typographiques par une apostrophe simple
+    name_edit = name.replace("’", "'").replace("'", "")
+
     # Supprimer toute la partie entre parenthèses commençant par "in"
-    name_edit = re.sub(r'\(in [^)]+\)', '', name)
+    name_edit = re.sub(r'\(in [^)]+\)', '', name_edit)
 
     # Supprimer toute la partie (previously ...)
     name_edit = re.sub(r'\(previously.*\)', '', name_edit)
@@ -21,14 +25,17 @@ def clean_name(name: str) -> str:
     # Supprimer les points
     name_edit = name_edit.replace(".", "")
 
+     # Remplacer les virgules, deux-points, points-virgules par des espaces (pour éviter les tirets collés)
+    name_edit = re.sub(r"[,;:]", " ", name_edit)
+
     # Remplacer plusieurs espaces par un seul espace
     name_edit = re.sub(r'\s+', ' ', name_edit).strip()
 
-    # Passer en minuscules
+    # Mettre en majuscule la première lettre de chaque mot
     name_edit = name_edit.capitalize()
 
     # Découper en mots et filtrer petits mots inutiles (optionnel)
-    words_to_remove = {'a', 'the', 'of', 'and', 'in', 'on'}
+    words_to_remove = {'a', 'the', 'of', 'and', 'in', 'on', 'for'}
     words = [w for w in name_edit.split() if w not in words_to_remove]
 
     # Remettre en forme avec des tirets 
