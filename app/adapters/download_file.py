@@ -96,6 +96,7 @@ async def download_pdf(
                         if not (df_404_existing["Name"] == medoc_name).any():
                             df_404_final = pd.concat([df_404_existing, df_404], ignore_index=True)
                             df_404_final.to_csv(not_found_file, index=False)
+                            logger.info(f"{medoc_name} enregistrée dans {not_found_file}")
                         return
                     elif resp.status == 429:
                         logger.warning(f"Erreur 429 (Too Many Requests) pour {medoc_name}. Nouvelle tentative... ({retries + 1}/{nb_retries})")
@@ -119,6 +120,7 @@ async def download_pdf(
             if not (df_echec_existing["Name"] == medoc_name).any():
                 df_echec_final = pd.concat([df_echec_existing, df_echec], ignore_index=True)
                 df_echec_final.to_csv(failed_urls_file, index=False)
+                logger.info(f"{medoc_name} enregistré dans {failed_urls_file}")
         
 async def retry_failed_downloads(
     failed_urls_file: str, 
@@ -159,26 +161,26 @@ async def retry_failed_downloads(
         await asyncio.gather(*tasks)
 
     if os.path.exists(failed_urls_file):
-            df_failed = pd.read_csv(failed_urls_file)
-            # 1. Retirer ceux qui ont été téléchargés avec succès
-            df_failed = df_failed[~df_failed["Name"].apply(lambda medoc_name: os.path.exists(f"{dl_path}/{medoc_name}.pdf"))]
-            # 2. Retirer ceux qui sont dans le fichier des 404
-            if os.path.exists(not_found_file):
-                df_404 = pd.read_csv(not_found_file)
-                df_failed = df_failed[~df_failed["Name"].isin(df_404["Name"])]
-            df_failed.to_csv(failed_urls_file, index=False)
-    elif df_failed.empty:
+        df_failed = pd.read_csv(failed_urls_file)
+
+    # Supprimer ceux qui ont été téléchargés
+        df_failed = df_failed[~df_failed["Name"].apply(lambda medoc_name: os.path.exists(f"{dl_path}/{medoc_name}.pdf"))]
+
+    # Supprimer ceux en 404
+    if os.path.exists(not_found_file):
+        df_404 = pd.read_csv(not_found_file)
+        df_failed = df_failed[~df_failed["Name"].isin(df_404["Name"])]
+
+    # S'il ne reste rien, on supprime le fichier
+    if df_failed.shape[0] == 0:
         os.remove(failed_urls_file)
         logger.info("Tous les fichiers ont été téléchargés, suppression du fichier failed_urls.csv.")
+        return False
     else:
+        # Sinon, on met à jour la liste
         df_failed.to_csv(failed_urls_file, index=False)
         logger.info(f"{len(df_failed)} fichiers restent à télécharger.")
-        
-    if not os.path.exists(failed_urls_file):
-        logger.info("Tous les fichiers ont été téléchargés avec succès.")
-        return False
-    df_failed = pd.read_csv(failed_urls_file)
-    return not df_failed.empty
+        return True
 
 # Fonction principale pour télécharger les fichiers PDF 
 async def download_files(

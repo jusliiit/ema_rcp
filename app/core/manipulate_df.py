@@ -78,7 +78,7 @@ def simplify_dataframe(
             shutil.copy(path_csv, f"{path_csv}_{today}.csv")
             
         df_light.to_csv(path_csv, index=False)
-        logger.success("Réussite de la sauvegarde du fichier simplifié")
+        logger.success("Réussite de l'archivage et de la sauvegarde du nouveau fichier simplifié")
         return df_light
     
     except Exception as exc:
