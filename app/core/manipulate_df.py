@@ -5,6 +5,7 @@ from datetime import datetime
 import shutil
 import os
 
+
 def clean_name(name: str) -> str:
 
     # Remplacer les apostrophes typographiques par une apostrophe simple
@@ -25,7 +26,7 @@ def clean_name(name: str) -> str:
     # Supprimer les points
     name_edit = name_edit.replace(".", "")
 
-     # Remplacer les virgules, deux-points, points-virgules par des espaces (pour éviter les tirets collés)
+    # Remplacer les virgules, deux-points, points-virgules par des espaces
     name_edit = re.sub(r"[,;:]", " ", name_edit)
 
     # Remplacer plusieurs espaces par un seul espace
@@ -38,10 +39,11 @@ def clean_name(name: str) -> str:
     words_to_remove = {'a', 'the', 'of', 'and', 'in', 'on', 'for'}
     words = [w for w in name_edit.split() if w not in words_to_remove]
 
-    # Remettre en forme avec des tirets 
+    # Remettre en forme avec des tirets
     name_edit = '-'.join(words)
 
     return name_edit
+
 
 # Fonction pour simplifier le DataFrame
 def simplify_dataframe(
@@ -70,17 +72,17 @@ def simplify_dataframe(
         df_light["Name"] = df_light["Name"].apply(clean_name)
         logger.success("Réussite de la simplification du fichier excel")
         df_light.to_json(path_json, orient="records")
-    
-# Avant d'écraser, archive l'ancien fichier s'il existe 
+
+# Avant d'écraser, archive l'ancien fichier s'il existe
         today: str = datetime.now().strftime("%d-%m-%Y")
         os.makedirs(os.path.dirname(path_csv), exist_ok=True)
         if os.path.exists(path_csv):
             shutil.copy(path_csv, f"{path_csv}_{today}.csv")
-            
+
         df_light.to_csv(path_csv, index=False)
         logger.success("Réussite de l'archivage et de la sauvegarde du nouveau fichier simplifié")
         return df_light
-    
+
     except Exception as exc:
         logger.exception(f"Erreur: {exc}")
         raise RuntimeError

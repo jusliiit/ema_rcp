@@ -20,23 +20,39 @@ langage: str = "en"
 df_authorised, df_withdrawn = asyncio.run(download_index(url_index_file, index_file_path))
 
 # Simplifier le dataframe
-df_authorised_light = simplify_dataframe(df_authorised, path_csv = "archives_authorised/fichier_simplifie.csv", path_json = "list_of_authorised_med.json")
-df_withdrawn_light = simplify_dataframe(df_withdrawn, path_csv = "archives_withdrawn/fichier_simplifie.csv", path_json = "list_of_withdrawn_med.json")
+df_authorised_light = simplify_dataframe(
+    df_authorised,
+    path_csv="archives_authorised/fichier_simplifie.csv",
+    path_json="list_of_authorised_med.json")
+
+df_withdrawn_light = simplify_dataframe(
+    df_withdrawn,
+    path_csv="archives_withdrawn/fichier_simplifie.csv",
+    path_json="list_of_withdrawn_med.json")
 
 # Renommer les fichiers RCP mis à jour
 rename_update_rcp(
-    df_authorised_today_path = "archives_authorised/fichier_simplifie.csv",
-    df_authorised_yesterday_path = f"archives_authorised/fichier_simplifie.csv_{today}.csv"
+    df_authorised_today_path="archives_authorised/fichier_simplifie.csv",
+    df_authorised_yesterday_path=f"archives_authorised/fichier_simplifie.csv_{today}.csv"
 )
 # Mettre à jour les RCP
-asyncio.run(update_rcp(df_authorised_light, langage, nb_workers=5, failed_urls_file="failed_urls_authorised.csv", dl_path="ema_authorised_rcp"))
+asyncio.run(update_rcp(
+    df_authorised_light,
+    langage, nb_workers=5,
+    failed_urls_file="failed_urls_authorised.csv",
+    dl_path="ema_authorised_rcp"))
 
 # Télécharger les fichiers PDF authorised
 logger.info("Downloading authorised RCP files...")
-asyncio.run(download_files(langage, df_authorised_light,dl_path = "ema_authorised_rcp", nb_workers=5, failed_urls_file="failed_urls_authorised.csv"))
+asyncio.run(download_files(
+    langage,
+    df_authorised_light,
+    dl_path="ema_authorised_rcp",
+    nb_workers=5,
+    failed_urls_file="failed_urls_authorised.csv"))
 
-#Télécharger les fichiers PDF withdrawn
+# Télécharger les fichiers PDF withdrawn
 logger.info("Downloading withdrawn RCP files...")
-asyncio.run(download_files(langage, df_withdrawn_light, dl_path = "ema_withdrawn_rcp", nb_workers=5, failed_urls_file="failed_urls_withdrawn.csv"))
+asyncio.run(download_files(langage, df_withdrawn_light, dl_path="ema_withdrawn_rcp", nb_workers=5, failed_urls_file="failed_urls_withdrawn.csv"))
 
 logger.info("Toutes les tâches ont été effectuées avec succès.")

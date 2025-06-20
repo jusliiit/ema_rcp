@@ -1,29 +1,29 @@
 import pandas as pd
-import os 
-import shutil 
-import asyncio 
+import os
+import shutil
+import asyncio
 import aiohttp
 from adapters.download_file import download_pdf, retry_failed_downloads
-from core.manipulate_df import clean_name 
 from loguru import logger
 from datetime import datetime
 
 today = datetime.now().strftime('%d-%m-%Y')
 
-#fonction pour renommer les fichiers RCP mis à jour
+
+# Fonction pour renommer les fichiers RCP mis à jour
 def rename_update_rcp(
         df_authorised_today_path: str = "archives_authorised/fichier_simplifie.csv",
         df_authorised_yesterday_path: str = f"archives_authorised/fichier_simplifie.csv_{today}.csv"
-): 
+):
     if not df_authorised_yesterday_path or not os.path.exists(df_authorised_yesterday_path):
-        logger.error(f"Aucun fichier de la veille trouvé, il n'y a rien à comparer.")
+        logger.error("Aucun fichier de la veille trouvé, il n'y a rien à comparer.")
         return None
-    
+
     df_today = pd.read_csv(df_authorised_today_path).set_index("Name")
     df_yesterday = pd.read_csv(df_authorised_yesterday_path).set_index("Name")
 
     for medoc_name in df_today.index:
-        if medoc_name in df_yesterday.index: 
+        if medoc_name in df_yesterday.index:
             rev_today = df_today.loc[medoc_name, "Revision_nb"]
             rev_yesterday = df_yesterday.loc[medoc_name, "Revision_nb"]
             if rev_today != rev_yesterday:
@@ -33,15 +33,17 @@ def rename_update_rcp(
                     shutil.move(file_path, file_old_path)
                     logger.info(f"Le fichier {medoc_name}.pdf a été renommé en {medoc_name}_old.pdf en raison d'une mise à jour.")
 
+
 async def update_rcp(
-        df_today : pd.DataFrame, 
+        df_today: pd.DataFrame,
         langage: str = "en",
         nb_workers: int = 3,
         failed_urls_file: str = "failed_urls_authorised.csv",
-        dl_path: str = "ema_authorised_rcp",)-> int:
+        dl_path: str = "ema_authorised_rcp"
+) -> int:
 
     sem = asyncio.Semaphore(nb_workers)
-    nb_updates = 0 
+    nb_updates = 0
 
     async with aiohttp.ClientSession() as session:
         tasks = []
@@ -63,7 +65,7 @@ async def update_rcp(
                         failed_urls_file
                     )
                 )
-                nb_updates += 1 
+                nb_updates += 1
                 logger.info(f"Mise à jour #{nb_updates} : RCP de {medoc_name} ajouté à la liste de téléchargement.")
         await asyncio.gather(*tasks)
 
