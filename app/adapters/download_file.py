@@ -79,6 +79,14 @@ async def download_pdf(
         if (df_not_found["Name"] == medoc_name).any():
             logger.info(f"{medoc_name} déjà marqué comme introuvable. Téléchargement ignoré.")
             return
+        
+    pdf_authorised = "ema_authorised_rcp/{medoc_name}.pdf"
+    pdf_withdrawn = "ema_withdrawn_rcp/{medoc_name}.pdf"
+
+    if os.path.exists(pdf_authorised) and os.path.exists(pdf_withdrawn):
+        os.remove(pdf_authorised)
+        logger.info(f"Suppression de {pdf_authorised} car RCP retiré du marché")
+        return 
 
     async with sem:
         try:
