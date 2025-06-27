@@ -16,7 +16,7 @@ def rename_update_rcp(
         df_authorised_yesterday_path: str = f"archives_authorised/fichier_simplifie.csv_{today}.csv"
 ):
     if not df_authorised_yesterday_path or not os.path.exists(df_authorised_yesterday_path):
-        logger.error("Aucun fichier de la veille trouvé, il n'y a rien à comparer.")
+        logger.error("No file from the previous day found, nothing to compare.")
         return None
 
     df_today = pd.read_csv(df_authorised_today_path).set_index("Name")
@@ -31,15 +31,16 @@ def rename_update_rcp(
                 file_old_path = f"ema_authorised_rcp/{medoc_name}_old.pdf"
                 if os.path.exists(file_path):
                     shutil.move(file_path, file_old_path)
-                    logger.info(f"Le fichier {medoc_name}.pdf a été renommé en {medoc_name}_old.pdf en raison d'une mise à jour.")
+                    logger.info(f"The file {medoc_name}.pdf has been renamed to {medoc_name}_old.pdf due to an update.")
 
 
 async def update_rcp(
         df_today: pd.DataFrame,
         langage: str = "en",
-        nb_workers: int = 3,
+        nb_workers: int = 5,
         failed_urls_file: str = "failed_urls_authorised.csv",
-        dl_path: str = "ema_authorised_rcp"
+        dl_path: str = "ema_authorised_rcp",
+        status: str = "authorised"
 ) -> int:
 
     sem = asyncio.Semaphore(nb_workers)
@@ -62,15 +63,16 @@ async def update_rcp(
                         file_path,
                         session,
                         sem,
-                        failed_urls_file
+                        failed_urls_file,
+                        status
                     )
                 )
                 nb_updates += 1
-                logger.info(f"Mise à jour #{nb_updates} : RCP de {medoc_name} ajouté à la liste de téléchargement.")
+                logger.info(f"Update #{nb_updates} : RCP for {medoc_name} added to the download list.")
         await asyncio.gather(*tasks)
 
     while await retry_failed_downloads(failed_urls_file, langage, nb_workers):
-        logger.info("Nouvelle tentative de téléchargement des fichiers échoués.")
+        logger.info("Retrying download of failed files.")
 
     for medoc_name in df_today["Name"]:
         file_path = f"ema_authorised_rcp/{medoc_name}.pdf"
@@ -78,9 +80,9 @@ async def update_rcp(
 
         if os.path.exists(file_path) and os.path.exists(file_old_path):
             os.remove(file_old_path)
-            logger.info(f"Ancien fichier RCP supprimé pour {medoc_name} (nouvelle version téléchargée avec succès).")
+            logger.info(f"Old RCP file deleted for {medoc_name} (new version downloaded successfully).")
 
     if nb_updates == 0:
-        logger.info("Aucune mise à jour de RCP n'a été effectuée.")
+        logger.info("No RCP update was performed.")
 
     return nb_updates

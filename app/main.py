@@ -23,12 +23,18 @@ df_authorised, df_withdrawn = asyncio.run(download_index(url_index_file, index_f
 df_authorised_light = simplify_dataframe(
     df_authorised,
     path_csv="archives_authorised/fichier_simplifie.csv",
-    path_json="list_of_authorised_med.json")
+    path_json="list_of_authorised_med.json",
+    authorised_names_clean=None)
+logger.info("Authorised medicines DataFrame successfully simplified.")
+
+authorised_names_clean = set(df_authorised_light["Name"])
 
 df_withdrawn_light = simplify_dataframe(
     df_withdrawn,
     path_csv="archives_withdrawn/fichier_simplifie.csv",
-    path_json="list_of_withdrawn_med.json")
+    path_json="list_of_withdrawn_med.json",
+    authorised_names_clean=authorised_names_clean)
+logger.info("Withdrawn medicines DataFrame successfully simplified.")
 
 # Renommer les fichiers RCP mis à jour
 rename_update_rcp(
@@ -38,9 +44,11 @@ rename_update_rcp(
 # Mettre à jour les RCP
 asyncio.run(update_rcp(
     df_authorised_light,
-    langage, nb_workers=5,
+    langage,
+    nb_workers=5,
     failed_urls_file="failed_urls_authorised.csv",
-    dl_path="ema_authorised_rcp"))
+    dl_path="ema_authorised_rcp",
+    status="Authorised"))
 
 # Télécharger les fichiers PDF authorised
 logger.info("Downloading authorised RCP files...")
@@ -49,10 +57,17 @@ asyncio.run(download_files(
     df_authorised_light,
     dl_path="ema_authorised_rcp",
     nb_workers=5,
-    failed_urls_file="failed_urls_authorised.csv"))
+    failed_urls_file="failed_urls_authorised.csv",
+    status="Authorised"))
 
 # Télécharger les fichiers PDF withdrawn
 logger.info("Downloading withdrawn RCP files...")
-asyncio.run(download_files(langage, df_withdrawn_light, dl_path="ema_withdrawn_rcp", nb_workers=5, failed_urls_file="failed_urls_withdrawn.csv"))
+asyncio.run(download_files(
+    langage,
+    df_withdrawn_light,
+    dl_path="ema_withdrawn_rcp",
+    nb_workers=5,
+    failed_urls_file="failed_urls_withdrawn.csv",
+    status="Withdrawn"))
 
-logger.info("Toutes les tâches ont été effectuées avec succès.")
+logger.info("All tasks completed successfully.")
