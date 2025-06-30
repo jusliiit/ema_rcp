@@ -3,7 +3,7 @@ from datetime import datetime
 import asyncio
 from adapters.download_file import download_index, download_files
 from core.manipulate_df import simplify_dataframe
-from core.update_rcp import rename_update_rcp, update_rcp
+from core.update_rcp import rename_update_rcp, update_rcp, change_status
 
 # Configurer le logger
 today_log: str = datetime.now().strftime("%d-%m-%Y_%H-%M-%S")
@@ -71,3 +71,7 @@ asyncio.run(download_files(
     status="Withdrawn"))
 
 logger.info("All tasks completed successfully.")
+
+# Supprimer les fichiers RCP ayant un statut "Withdrawn" du dossier des RCP autorisés
+logger.info("Removing authorised RCP files that are now withdrawn...")
+change_status(df_authorised_light)

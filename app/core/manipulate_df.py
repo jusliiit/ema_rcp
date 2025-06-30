@@ -7,38 +7,27 @@ import os
 
 
 def clean_name_authorised(name: str) -> str:
-
     # Remplacer les apostrophes typographiques par une apostrophe simple
     name_edit_authorised = name.replace("’", "'").replace("'", "")
-
     # Supprimer toute la partie entre parenthèses commençant par "in"
     name_edit_authorised = re.sub(r'\(in [^)]+\)', '', name_edit_authorised)
-
     # Supprimer toute la partie (previously ...)
     name_edit_authorised = re.sub(r'\(previously.*\)', '', name_edit_authorised)
-
     # Supprimer toutes les parenthèses restantes mais garder leur contenu
     name_edit_authorised = re.sub(r'[()]', '', name_edit_authorised)
-
     # Remplacer "/" par espace
     name_edit_authorised = name_edit_authorised.replace("/", " ")
-
     # Supprimer les points
     name_edit_authorised = name_edit_authorised.replace(".", "")
-
     # Remplacer les virgules, deux-points, points-virgules par des espaces
     name_edit_authorised = re.sub(r"[,;:]", " ", name_edit_authorised)
-
     # Remplacer plusieurs espaces par un seul espace
     name_edit_authorised = re.sub(r'\s+', ' ', name_edit_authorised).strip()
-
     # Mettre en majuscule la première lettre de chaque mot
     name_edit_authorised = name_edit_authorised.capitalize()
-
     # Découper en mots et filtrer petits mots inutiles (optionnel)
     words_to_remove = {'a', 'the', 'of', 'and', 'in', 'on', 'for'}
     words = [w for w in name_edit_authorised.split() if w not in words_to_remove]
-
     # Remettre en forme avec des tirets
     name_edit_authorised = '-'.join(words)
     return name_edit_authorised
@@ -46,38 +35,27 @@ def clean_name_authorised(name: str) -> str:
 
 def clean_name_withdrawn(name: str,
                          name_edit_authorised: str) -> str:
-
     # Remplacer les apostrophes typographiques par une apostrophe simple
     name_edit_withdrawn = name.replace("’", "'").replace("'", "")
-
     # Supprimer toute la partie entre parenthèses commençant par "in"
     name_edit_withdrawn = re.sub(r'\(in [^)]+\)', '', name_edit_withdrawn)
-
     # Supprimer toute la partie (previously ...)
     name_edit_withdrawn = re.sub(r'\(previously.*\)', '', name_edit_withdrawn)
-    
     # Supprimer toutes les parenthèses restantes mais garder leur contenu
     name_edit_withdrawn = re.sub(r'[()]', '', name_edit_withdrawn)
-   
     # Remplacer "/" par espace
     name_edit_withdrawn = name_edit_withdrawn.replace("/", " ")
-
     # Supprimer les points
     name_edit_withdrawn = name_edit_withdrawn.replace(".", "")
-
     # Remplacer les virgules, deux-points, points-virgules par des espaces
     name_edit_withdrawn = re.sub(r"[,;:]", " ", name_edit_withdrawn)
-
     # Remplacer plusieurs espaces par un seul espace
     name_edit_withdrawn = re.sub(r'\s+', ' ', name_edit_withdrawn).strip()
-
     # Mettre en majuscule la première lettre de chaque mot
     name_edit_withdrawn = name_edit_withdrawn.capitalize()
-
     # Découper en mots et filtrer petits mots inutiles (optionnel)
     words_to_remove = {'a', 'the', 'of', 'and', 'in', 'on', 'for'}
     words = [w for w in name_edit_withdrawn.split() if w not in words_to_remove]
-
     # Remettre en forme avec des tirets
     name_edit_withdrawn = '-'.join(words)
 

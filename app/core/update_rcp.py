@@ -83,5 +83,13 @@ async def update_rcp(
 
     if nb_updates == 0:
         logger.info("No RCP update was performed.")
-
     return nb_updates
+
+def change_status(df_today : pd.DataFrame) -> None:
+    
+    for drug_name in df_today["Name"]:
+        file_path_authorised = f"ema_authorised_rcp/{drug_name}.pdf"
+        file_path_withdrawn = f"ema_withdrawn_rcp/{drug_name}.pdf"
+        if os.path.exists (file_path_authorised) and os.path.exists(file_path_withdrawn):
+            os.remove(file_path_authorised)
+            logger.info(f"Removed {file_path_authorised} because {drug_name} is now withdrawn.")
