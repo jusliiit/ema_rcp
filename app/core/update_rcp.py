@@ -70,7 +70,13 @@ async def update_rcp(
                 logger.info(f"Update #{nb_updates} : RCP for {drug_name} added to the download list.")
         await asyncio.gather(*tasks)
 
-    while await retry_failed_downloads(failed_urls_file, language, nb_workers):
+    while await retry_failed_downloads(failed_urls_file,
+                                       dl_path,
+                                       status,
+                                       language,
+                                       nb_workers,
+                                       "not_found_urls.csv"):
+    
         logger.info("Retrying download of failed files.")
 
     for drug_name in df_today["Name"]:

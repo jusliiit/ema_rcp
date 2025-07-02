@@ -50,16 +50,6 @@ asyncio.run(update_rcp(
     dl_path="ema_authorised_rcp",
     status="Authorised"))
 
-# Télécharger les fichiers PDF authorised
-logger.info("Downloading authorised RCP files...")
-asyncio.run(download_files(
-    language,
-    df_authorised_light,
-    dl_path="ema_authorised_rcp",
-    nb_workers=5,
-    failed_urls_file="failed_urls_authorised.csv",
-    status="Authorised"))
-
 # Télécharger les fichiers PDF withdrawn
 logger.info("Downloading withdrawn RCP files...")
 asyncio.run(download_files(
