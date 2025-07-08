@@ -76,7 +76,6 @@ async def update_rcp(
                                        language,
                                        nb_workers,
                                        "not_found_urls.csv"):
-    
         logger.info("Retrying download of failed files.")
 
     for drug_name in df_today["Name"]:

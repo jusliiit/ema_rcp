@@ -70,8 +70,9 @@ asyncio.run(download_files(
     failed_urls_file="failed_urls_withdrawn.csv",
     status="Withdrawn"))
 
-logger.info("All tasks completed successfully.")
-
 # Supprimer les fichiers RCP ayant un statut "Withdrawn" du dossier des RCP autorisés
 logger.info("Removing authorised RCP files that are now withdrawn...")
 change_status(df_authorised_light)
+change_status(df_withdrawn_light)
+
+logger.info("All tasks completed successfully.")
