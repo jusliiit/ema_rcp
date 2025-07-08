@@ -1,2 +1,0 @@
-echo --- Lancement le %date% %time% --- >> "C:\Users\rouajul\Desktop\Fichiers ema_rcp\automatisation"
-"C:\Users\rouajul\AppData\Local\Microsoft\WindowsApps\python.exe" "C:\Users\rouajul\Desktop\Fichiers ema_rcp\app\main.py" >> "C:\Users\rouajul\Desktop\Fichiers ema_rcp\automatisation\log_rcp.txt" 2>&1

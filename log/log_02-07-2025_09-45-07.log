@@ -1,0 +1,522 @@
+2025-07-02 09:45:07.796 | SUCCESS  | adapters.download_file:download_index:36 - Download successful from https://www.ema.europa.eu/en/documents/report/medicines-output-medicines-report_en.xlsx
+2025-07-02 09:45:09.493 | SUCCESS  | core.manipulate_df:simplify_dataframe:106 - Successfully simplified the Excel file for authorised medicines.
+2025-07-02 09:45:09.512 | SUCCESS  | core.manipulate_df:simplify_dataframe:125 - Successfully archived and saved the new simplified file.
+2025-07-02 09:45:09.512 | INFO     | __main__:<module>:28 - Authorised medicines DataFrame successfully simplified.
+2025-07-02 09:45:09.514 | WARNING  | core.manipulate_df:clean_name_withdrawn:64 - The name Pemetrexed-pfizer is identical for both authorised and withdrawn medicines.
+2025-07-02 09:45:09.515 | WARNING  | core.manipulate_df:clean_name_withdrawn:64 - The name Vantobra is identical for both authorised and withdrawn medicines.
+2025-07-02 09:45:09.515 | WARNING  | core.manipulate_df:clean_name_withdrawn:64 - The name Fluenz is identical for both authorised and withdrawn medicines.
+2025-07-02 09:45:09.516 | WARNING  | core.manipulate_df:clean_name_withdrawn:64 - The name Clopidogrel-ratiopharm is identical for both authorised and withdrawn medicines.
+2025-07-02 09:45:09.516 | WARNING  | core.manipulate_df:clean_name_withdrawn:64 - The name Liprolog is identical for both authorised and withdrawn medicines.
+2025-07-02 09:45:09.518 | SUCCESS  | core.manipulate_df:simplify_dataframe:116 - Successfully simplified the Excel file for withdrawn medicines.
+2025-07-02 09:45:09.527 | SUCCESS  | core.manipulate_df:simplify_dataframe:125 - Successfully archived and saved the new simplified file.
+2025-07-02 09:45:09.530 | INFO     | __main__:<module>:37 - Withdrawn medicines DataFrame successfully simplified.
+2025-07-02 09:45:09.552 | INFO     | core.update_rcp:rename_update_rcp:34 - The file Busulfan-fresenius-kabi.pdf has been renamed to Busulfan-fresenius-kabi_old.pdf due to an update.
+2025-07-02 09:45:09.553 | INFO     | core.update_rcp:rename_update_rcp:34 - The file Constella.pdf has been renamed to Constella_old.pdf due to an update.
+2025-07-02 09:45:09.554 | INFO     | core.update_rcp:rename_update_rcp:34 - The file Cimzia.pdf has been renamed to Cimzia_old.pdf due to an update.
+2025-07-02 09:45:09.555 | INFO     | core.update_rcp:rename_update_rcp:34 - The file Livmarli.pdf has been renamed to Livmarli_old.pdf due to an update.
+2025-07-02 09:45:09.556 | INFO     | core.update_rcp:rename_update_rcp:34 - The file Xydalba.pdf has been renamed to Xydalba_old.pdf due to an update.
+2025-07-02 09:45:09.557 | INFO     | core.update_rcp:rename_update_rcp:34 - The file Synjardy.pdf has been renamed to Synjardy_old.pdf due to an update.
+2025-07-02 09:45:09.558 | INFO     | core.update_rcp:rename_update_rcp:34 - The file Breyanzi.pdf has been renamed to Breyanzi_old.pdf due to an update.
+2025-07-02 09:45:09.558 | INFO     | core.update_rcp:rename_update_rcp:34 - The file Naveruclif.pdf has been renamed to Naveruclif_old.pdf due to an update.
+2025-07-02 09:45:09.561 | INFO     | core.update_rcp:rename_update_rcp:34 - The file Sorafenib-accord.pdf has been renamed to Sorafenib-accord_old.pdf due to an update.
+2025-07-02 09:45:09.563 | INFO     | core.update_rcp:rename_update_rcp:34 - The file Jardiance.pdf has been renamed to Jardiance_old.pdf due to an update.
+2025-07-02 09:45:09.564 | INFO     | core.update_rcp:rename_update_rcp:34 - The file Bropair-spiromax.pdf has been renamed to Bropair-spiromax_old.pdf due to an update.
+2025-07-02 09:45:09.565 | INFO     | core.update_rcp:rename_update_rcp:34 - The file Levetiracetam-actavis.pdf has been renamed to Levetiracetam-actavis_old.pdf due to an update.
+2025-07-02 09:45:09.566 | INFO     | core.update_rcp:rename_update_rcp:34 - The file Glyxambi.pdf has been renamed to Glyxambi_old.pdf due to an update.
+2025-07-02 09:45:09.567 | INFO     | core.update_rcp:rename_update_rcp:34 - The file Keppra.pdf has been renamed to Keppra_old.pdf due to an update.
+2025-07-02 09:45:09.567 | INFO     | core.update_rcp:rename_update_rcp:34 - The file Levetiracetam-ratiopharm.pdf has been renamed to Levetiracetam-ratiopharm_old.pdf due to an update.
+2025-07-02 09:45:09.568 | INFO     | core.update_rcp:rename_update_rcp:34 - The file Levetiracetam-teva.pdf has been renamed to Levetiracetam-teva_old.pdf due to an update.
+2025-07-02 09:45:09.568 | INFO     | core.update_rcp:rename_update_rcp:34 - The file Emtricitabine-tenofovir-disoproxil-mylan.pdf has been renamed to Emtricitabine-tenofovir-disoproxil-mylan_old.pdf due to an update.
+2025-07-02 09:45:09.569 | INFO     | core.update_rcp:rename_update_rcp:34 - The file Levetiracetam-actavis-group.pdf has been renamed to Levetiracetam-actavis-group_old.pdf due to an update.
+2025-07-02 09:45:09.570 | INFO     | core.update_rcp:rename_update_rcp:34 - The file Vyjuvek.pdf has been renamed to Vyjuvek_old.pdf due to an update.
+2025-07-02 09:45:09.586 | INFO     | core.update_rcp:update_rcp:70 - Update #1 : RCP for Busulfan-fresenius-kabi added to the download list.
+2025-07-02 09:45:09.587 | INFO     | core.update_rcp:update_rcp:70 - Update #2 : RCP for Constella added to the download list.
+2025-07-02 09:45:09.588 | INFO     | core.update_rcp:update_rcp:70 - Update #3 : RCP for Cimzia added to the download list.
+2025-07-02 09:45:09.588 | INFO     | core.update_rcp:update_rcp:70 - Update #4 : RCP for Livmarli added to the download list.
+2025-07-02 09:45:09.589 | INFO     | core.update_rcp:update_rcp:70 - Update #5 : RCP for Xydalba added to the download list.
+2025-07-02 09:45:09.589 | INFO     | core.update_rcp:update_rcp:70 - Update #6 : RCP for Synjardy added to the download list.
+2025-07-02 09:45:09.590 | INFO     | core.update_rcp:update_rcp:70 - Update #7 : RCP for Breyanzi added to the download list.
+2025-07-02 09:45:09.590 | INFO     | core.update_rcp:update_rcp:70 - Update #8 : RCP for Naveruclif added to the download list.
+2025-07-02 09:45:09.590 | INFO     | core.update_rcp:update_rcp:70 - Update #9 : RCP for Sorafenib-accord added to the download list.
+2025-07-02 09:45:09.591 | INFO     | core.update_rcp:update_rcp:70 - Update #10 : RCP for Jardiance added to the download list.
+2025-07-02 09:45:09.592 | INFO     | core.update_rcp:update_rcp:70 - Update #11 : RCP for Bropair-spiromax added to the download list.
+2025-07-02 09:45:09.592 | INFO     | core.update_rcp:update_rcp:70 - Update #12 : RCP for Levetiracetam-actavis added to the download list.
+2025-07-02 09:45:09.592 | INFO     | core.update_rcp:update_rcp:70 - Update #13 : RCP for Glyxambi added to the download list.
+2025-07-02 09:45:09.593 | INFO     | core.update_rcp:update_rcp:70 - Update #14 : RCP for Keppra added to the download list.
+2025-07-02 09:45:09.594 | INFO     | core.update_rcp:update_rcp:70 - Update #15 : RCP for Levetiracetam-ratiopharm added to the download list.
+2025-07-02 09:45:09.599 | INFO     | core.update_rcp:update_rcp:70 - Update #16 : RCP for Levetiracetam-teva added to the download list.
+2025-07-02 09:45:09.600 | INFO     | core.update_rcp:update_rcp:70 - Update #17 : RCP for Emtricitabine-tenofovir-disoproxil-mylan added to the download list.
+2025-07-02 09:45:09.601 | INFO     | core.update_rcp:update_rcp:70 - Update #18 : RCP for Levetiracetam-actavis-group added to the download list.
+2025-07-02 09:45:09.602 | INFO     | core.update_rcp:update_rcp:70 - Update #19 : RCP for Vyjuvek added to the download list.
+2025-07-02 09:45:09.647 | INFO     | adapters.download_file:download_pdf:91 - Downloading Busulfan-fresenius-kabi/1477 : Busulfan-fresenius-kabi
+2025-07-02 09:45:09.652 | INFO     | adapters.download_file:download_pdf:91 - Downloading Constella/1477 : Constella
+2025-07-02 09:45:09.653 | INFO     | adapters.download_file:download_pdf:91 - Downloading Cimzia/1477 : Cimzia
+2025-07-02 09:45:09.655 | INFO     | adapters.download_file:download_pdf:91 - Downloading Livmarli/1477 : Livmarli
+2025-07-02 09:45:09.656 | INFO     | adapters.download_file:download_pdf:91 - Downloading Xydalba/1477 : Xydalba
+2025-07-02 09:45:09.741 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Cimzia. Retrying...(1/5)
+2025-07-02 09:45:09.744 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Busulfan-fresenius-kabi. Retrying...(1/5)
+2025-07-02 09:45:09.756 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Livmarli. Retrying...(1/5)
+2025-07-02 09:45:09.883 | SUCCESS  | adapters.download_file:download_pdf:99 - Success: Constella
+2025-07-02 09:45:09.883 | INFO     | adapters.download_file:download_pdf:91 - Downloading Synjardy/1477 : Synjardy
+2025-07-02 09:45:09.892 | SUCCESS  | adapters.download_file:download_pdf:99 - Success: Xydalba
+2025-07-02 09:45:09.893 | INFO     | adapters.download_file:download_pdf:91 - Downloading Breyanzi/1477 : Breyanzi
+2025-07-02 09:45:09.926 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Synjardy. Retrying...(1/5)
+2025-07-02 09:45:09.934 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Breyanzi. Retrying...(1/5)
+2025-07-02 09:45:10.795 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Livmarli. Retrying...(2/5)
+2025-07-02 09:45:11.809 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Busulfan-fresenius-kabi. Retrying...(2/5)
+2025-07-02 09:45:12.012 | SUCCESS  | adapters.download_file:download_pdf:99 - Success: Cimzia
+2025-07-02 09:45:12.012 | INFO     | adapters.download_file:download_pdf:91 - Downloading Naveruclif/1477 : Naveruclif
+2025-07-02 09:45:12.050 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Naveruclif. Retrying...(1/5)
+2025-07-02 09:45:12.844 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Livmarli. Retrying...(3/5)
+2025-07-02 09:45:16.979 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Breyanzi. Retrying...(2/5)
+2025-07-02 09:45:18.098 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Naveruclif. Retrying...(2/5)
+2025-07-02 09:45:24.093 | SUCCESS  | adapters.download_file:download_pdf:99 - Success: Livmarli
+2025-07-02 09:45:24.093 | INFO     | adapters.download_file:download_pdf:91 - Downloading Sorafenib-accord/1477 : Sorafenib-accord
+2025-07-02 09:45:24.262 | SUCCESS  | adapters.download_file:download_pdf:99 - Success: Sorafenib-accord
+2025-07-02 09:45:24.262 | INFO     | adapters.download_file:download_pdf:91 - Downloading Jardiance/1477 : Jardiance
+2025-07-02 09:45:24.547 | SUCCESS  | adapters.download_file:download_pdf:99 - Success: Jardiance
+2025-07-02 09:45:24.548 | INFO     | adapters.download_file:download_pdf:91 - Downloading Bropair-spiromax/1477 : Bropair-spiromax
+2025-07-02 09:45:24.584 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Bropair-spiromax. Retrying...(1/5)
+2025-07-02 09:45:24.988 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Synjardy. Retrying...(2/5)
+2025-07-02 09:45:25.867 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Busulfan-fresenius-kabi. Retrying...(3/5)
+2025-07-02 09:45:29.624 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Bropair-spiromax. Retrying...(2/5)
+2025-07-02 09:45:31.043 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Breyanzi. Retrying...(3/5)
+2025-07-02 09:45:31.067 | SUCCESS  | adapters.download_file:download_pdf:99 - Success: Busulfan-fresenius-kabi
+2025-07-02 09:45:31.067 | INFO     | adapters.download_file:download_pdf:91 - Downloading Levetiracetam-actavis/1477 : Levetiracetam-actavis
+2025-07-02 09:45:31.104 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Levetiracetam-actavis. Retrying...(1/5)
+2025-07-02 09:45:32.166 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Naveruclif. Retrying...(3/5)
+2025-07-02 09:45:33.665 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Bropair-spiromax. Retrying...(3/5)
+2025-07-02 09:45:35.089 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Breyanzi. Retrying...(4/5)
+2025-07-02 09:45:37.026 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Synjardy. Retrying...(3/5)
+2025-07-02 09:45:39.071 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Synjardy. Retrying...(4/5)
+2025-07-02 09:45:39.214 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Naveruclif. Retrying...(4/5)
+2025-07-02 09:45:44.150 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Levetiracetam-actavis. Retrying...(2/5)
+2025-07-02 09:45:46.117 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Synjardy. Retrying...(5/5)
+2025-07-02 09:45:46.365 | SUCCESS  | adapters.download_file:download_pdf:99 - Success: Breyanzi
+2025-07-02 09:45:46.365 | INFO     | adapters.download_file:download_pdf:91 - Downloading Glyxambi/1477 : Glyxambi
+2025-07-02 09:45:46.403 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Glyxambi. Retrying...(1/5)
+2025-07-02 09:45:46.711 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Bropair-spiromax. Retrying...(4/5)
+2025-07-02 09:45:48.262 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Naveruclif. Retrying...(5/5)
+2025-07-02 09:45:55.216 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Levetiracetam-actavis. Retrying...(3/5)
+2025-07-02 09:45:55.778 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Bropair-spiromax. Retrying...(5/5)
+2025-07-02 09:45:56.912 | ERROR    | adapters.download_file:download_pdf:121 - Error: Maximum number of retries (5) reached for Naveruclif
+2025-07-02 09:45:56.915 | INFO     | adapters.download_file:download_pdf:136 - Naveruclif recorded in failed_urls_authorised.csv
+2025-07-02 09:45:56.917 | INFO     | adapters.download_file:download_pdf:91 - Downloading Keppra/1477 : Keppra
+2025-07-02 09:45:57.164 | SUCCESS  | adapters.download_file:download_pdf:99 - Success: Keppra
+2025-07-02 09:45:57.165 | INFO     | adapters.download_file:download_pdf:91 - Downloading Levetiracetam-ratiopharm/1477 : Levetiracetam-ratiopharm
+2025-07-02 09:45:57.209 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Levetiracetam-ratiopharm. Retrying...(1/5)
+2025-07-02 09:45:57.446 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Glyxambi. Retrying...(2/5)
+2025-07-02 09:45:59.131 | ERROR    | adapters.download_file:download_pdf:121 - Error: Maximum number of retries (5) reached for Synjardy
+2025-07-02 09:45:59.134 | INFO     | adapters.download_file:download_pdf:136 - Synjardy recorded in failed_urls_authorised.csv
+2025-07-02 09:45:59.134 | INFO     | adapters.download_file:download_pdf:91 - Downloading Levetiracetam-teva/1477 : Levetiracetam-teva
+2025-07-02 09:45:59.173 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Levetiracetam-teva. Retrying...(1/5)
+2025-07-02 09:46:00.245 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Levetiracetam-ratiopharm. Retrying...(2/5)
+2025-07-02 09:46:00.780 | ERROR    | adapters.download_file:download_pdf:121 - Error: Maximum number of retries (5) reached for Bropair-spiromax
+2025-07-02 09:46:00.789 | INFO     | adapters.download_file:download_pdf:136 - Bropair-spiromax recorded in failed_urls_authorised.csv
+2025-07-02 09:46:00.789 | INFO     | adapters.download_file:download_pdf:91 - Downloading Emtricitabine-tenofovir-disoproxil-mylan/1477 : Emtricitabine-tenofovir-disoproxil-mylan
+2025-07-02 09:46:00.824 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Emtricitabine-tenofovir-disoproxil-mylan. Retrying...(1/5)
+2025-07-02 09:46:01.868 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Emtricitabine-tenofovir-disoproxil-mylan. Retrying...(2/5)
+2025-07-02 09:46:02.285 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Levetiracetam-ratiopharm. Retrying...(3/5)
+2025-07-02 09:46:03.240 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Levetiracetam-teva. Retrying...(2/5)
+2025-07-02 09:46:05.564 | SUCCESS  | adapters.download_file:download_pdf:99 - Success: Glyxambi
+2025-07-02 09:46:05.564 | INFO     | adapters.download_file:download_pdf:91 - Downloading Levetiracetam-actavis-group/1477 : Levetiracetam-actavis-group
+2025-07-02 09:46:05.602 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Levetiracetam-actavis-group. Retrying...(1/5)
+2025-07-02 09:46:05.911 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Emtricitabine-tenofovir-disoproxil-mylan. Retrying...(3/5)
+2025-07-02 09:46:07.262 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Levetiracetam-actavis. Retrying...(4/5)
+2025-07-02 09:46:08.288 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Levetiracetam-teva. Retrying...(3/5)
+2025-07-02 09:46:09.303 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Levetiracetam-actavis. Retrying...(5/5)
+2025-07-02 09:46:11.320 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Levetiracetam-ratiopharm. Retrying...(4/5)
+2025-07-02 09:46:12.651 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Levetiracetam-actavis-group. Retrying...(2/5)
+2025-07-02 09:46:14.311 | ERROR    | adapters.download_file:download_pdf:121 - Error: Maximum number of retries (5) reached for Levetiracetam-actavis
+2025-07-02 09:46:14.325 | INFO     | adapters.download_file:download_pdf:136 - Levetiracetam-actavis recorded in failed_urls_authorised.csv
+2025-07-02 09:46:14.325 | INFO     | adapters.download_file:download_pdf:91 - Downloading Vyjuvek/1477 : Vyjuvek
+2025-07-02 09:46:14.364 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Vyjuvek. Retrying...(1/5)
+2025-07-02 09:46:17.982 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Emtricitabine-tenofovir-disoproxil-mylan. Retrying...(4/5)
+2025-07-02 09:46:19.511 | SUCCESS  | adapters.download_file:download_pdf:99 - Success: Levetiracetam-teva
+2025-07-02 09:46:20.365 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Levetiracetam-ratiopharm. Retrying...(5/5)
+2025-07-02 09:46:21.429 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Vyjuvek. Retrying...(2/5)
+2025-07-02 09:46:22.376 | ERROR    | adapters.download_file:download_pdf:121 - Error: Maximum number of retries (5) reached for Levetiracetam-ratiopharm
+2025-07-02 09:46:22.392 | INFO     | adapters.download_file:download_pdf:136 - Levetiracetam-ratiopharm recorded in failed_urls_authorised.csv
+2025-07-02 09:46:23.026 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Emtricitabine-tenofovir-disoproxil-mylan. Retrying...(5/5)
+2025-07-02 09:46:27.695 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Levetiracetam-actavis-group. Retrying...(3/5)
+2025-07-02 09:46:29.039 | ERROR    | adapters.download_file:download_pdf:121 - Error: Maximum number of retries (5) reached for Emtricitabine-tenofovir-disoproxil-mylan
+2025-07-02 09:46:29.054 | INFO     | adapters.download_file:download_pdf:136 - Emtricitabine-tenofovir-disoproxil-mylan recorded in failed_urls_authorised.csv
+2025-07-02 09:46:35.707 | SUCCESS  | adapters.download_file:download_pdf:99 - Success: Vyjuvek
+2025-07-02 09:46:36.937 | SUCCESS  | adapters.download_file:download_pdf:99 - Success: Levetiracetam-actavis-group
+2025-07-02 09:46:36.954 | INFO     | adapters.download_file:download_pdf:91 - Downloading 1/6 : Naveruclif
+2025-07-02 09:46:36.956 | INFO     | adapters.download_file:download_pdf:91 - Downloading 2/6 : Synjardy
+2025-07-02 09:46:36.957 | INFO     | adapters.download_file:download_pdf:91 - Downloading 3/6 : Bropair-spiromax
+2025-07-02 09:46:37.026 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Synjardy. Retrying...(1/5)
+2025-07-02 09:46:37.041 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Bropair-spiromax. Retrying...(1/5)
+2025-07-02 09:46:37.045 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Naveruclif. Retrying...(1/5)
+2025-07-02 09:46:39.081 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Synjardy. Retrying...(2/5)
+2025-07-02 09:46:39.082 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Bropair-spiromax. Retrying...(2/5)
+2025-07-02 09:46:41.097 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Naveruclif. Retrying...(2/5)
+2025-07-02 09:46:47.366 | SUCCESS  | adapters.download_file:download_pdf:99 - Success: Synjardy
+2025-07-02 09:46:47.366 | INFO     | adapters.download_file:download_pdf:91 - Downloading 4/6 : Levetiracetam-actavis
+2025-07-02 09:46:47.402 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Levetiracetam-actavis. Retrying...(1/5)
+2025-07-02 09:46:48.129 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Bropair-spiromax. Retrying...(3/5)
+2025-07-02 09:46:55.373 | SUCCESS  | adapters.download_file:download_pdf:99 - Success: Naveruclif
+2025-07-02 09:46:55.374 | INFO     | adapters.download_file:download_pdf:91 - Downloading 5/6 : Levetiracetam-ratiopharm
+2025-07-02 09:46:55.432 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Levetiracetam-ratiopharm. Retrying...(1/5)
+2025-07-02 09:46:56.173 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Bropair-spiromax. Retrying...(4/5)
+2025-07-02 09:46:58.211 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Bropair-spiromax. Retrying...(5/5)
+2025-07-02 09:47:00.613 | SUCCESS  | adapters.download_file:download_pdf:99 - Success: Levetiracetam-actavis
+2025-07-02 09:47:00.614 | INFO     | adapters.download_file:download_pdf:91 - Downloading 6/6 : Emtricitabine-tenofovir-disoproxil-mylan
+2025-07-02 09:47:00.651 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Emtricitabine-tenofovir-disoproxil-mylan. Retrying...(1/5)
+2025-07-02 09:47:04.217 | ERROR    | adapters.download_file:download_pdf:121 - Error: Maximum number of retries (5) reached for Bropair-spiromax
+2025-07-02 09:47:07.704 | SUCCESS  | adapters.download_file:download_pdf:99 - Success: Levetiracetam-ratiopharm
+2025-07-02 09:47:07.723 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Emtricitabine-tenofovir-disoproxil-mylan. Retrying...(2/5)
+2025-07-02 09:47:09.782 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Emtricitabine-tenofovir-disoproxil-mylan. Retrying...(3/5)
+2025-07-02 09:47:14.068 | SUCCESS  | adapters.download_file:download_pdf:99 - Success: Emtricitabine-tenofovir-disoproxil-mylan
+2025-07-02 09:47:14.074 | INFO     | adapters.download_file:retry_failed_downloads:198 - 1 files remain to be downloaded.
+2025-07-02 09:47:14.075 | INFO     | core.update_rcp:update_rcp:74 - Retrying download of failed files.
+2025-07-02 09:47:14.085 | INFO     | adapters.download_file:download_pdf:91 - Downloading 1/1 : Bropair-spiromax
+2025-07-02 09:47:14.173 | WARNING  | adapters.download_file:download_pdf:116 - Error 429 : too many requests for Bropair-spiromax. Retrying...(1/5)
+2025-07-02 09:47:29.553 | SUCCESS  | adapters.download_file:download_pdf:99 - Success: Bropair-spiromax
+2025-07-02 09:47:29.559 | INFO     | adapters.download_file:retry_failed_downloads:193 - All files have been downloaded, deleting the failed_urls.csv file.
+2025-07-02 09:47:29.560 | INFO     | core.update_rcp:update_rcp:82 - Old RCP file deleted for Busulfan-fresenius-kabi (new version downloaded successfully).
+2025-07-02 09:47:29.562 | INFO     | core.update_rcp:update_rcp:82 - Old RCP file deleted for Constella (new version downloaded successfully).
+2025-07-02 09:47:29.563 | INFO     | core.update_rcp:update_rcp:82 - Old RCP file deleted for Cimzia (new version downloaded successfully).
+2025-07-02 09:47:29.564 | INFO     | core.update_rcp:update_rcp:82 - Old RCP file deleted for Livmarli (new version downloaded successfully).
+2025-07-02 09:47:29.564 | INFO     | core.update_rcp:update_rcp:82 - Old RCP file deleted for Xydalba (new version downloaded successfully).
+2025-07-02 09:47:29.565 | INFO     | core.update_rcp:update_rcp:82 - Old RCP file deleted for Breyanzi (new version downloaded successfully).
+2025-07-02 09:47:29.565 | INFO     | core.update_rcp:update_rcp:82 - Old RCP file deleted for Sorafenib-accord (new version downloaded successfully).
+2025-07-02 09:47:29.566 | INFO     | core.update_rcp:update_rcp:82 - Old RCP file deleted for Jardiance (new version downloaded successfully).
+2025-07-02 09:47:29.567 | INFO     | core.update_rcp:update_rcp:82 - Old RCP file deleted for Glyxambi (new version downloaded successfully).
+2025-07-02 09:47:29.567 | INFO     | core.update_rcp:update_rcp:82 - Old RCP file deleted for Keppra (new version downloaded successfully).
+2025-07-02 09:47:29.568 | INFO     | core.update_rcp:update_rcp:82 - Old RCP file deleted for Levetiracetam-teva (new version downloaded successfully).
+2025-07-02 09:47:29.571 | INFO     | core.update_rcp:update_rcp:82 - Old RCP file deleted for Levetiracetam-actavis-group (new version downloaded successfully).
+2025-07-02 09:47:29.571 | INFO     | core.update_rcp:update_rcp:82 - Old RCP file deleted for Vyjuvek (new version downloaded successfully).
+2025-07-02 09:47:29.753 | INFO     | __main__:<module>:54 - Downloading withdrawn RCP files...
+2025-07-02 09:47:29.756 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Jetrea.pdf already exists. Download skipped.
+2025-07-02 09:47:29.756 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Zostavax.pdf already exists. Download skipped.
+2025-07-02 09:47:29.756 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Beqvez.pdf already exists. Download skipped.
+2025-07-02 09:47:29.757 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Arsenic-trioxide-mylan.pdf already exists. Download skipped.
+2025-07-02 09:47:29.757 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Extavia.pdf already exists. Download skipped.
+2025-07-02 09:47:29.757 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Alofisel.pdf already exists. Download skipped.
+2025-07-02 09:47:29.758 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Regkirona.pdf already exists. Download skipped.
+2025-07-02 09:47:29.758 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Mycapssa.pdf already exists. Download skipped.
+2025-07-02 09:47:29.759 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Riarify.pdf already exists. Download skipped.
+2025-07-02 09:47:29.759 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Penbraya.pdf already exists. Download skipped.
+2025-07-02 09:47:29.759 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Gavreto.pdf already exists. Download skipped.
+2025-07-02 09:47:29.760 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Prehevbri.pdf already exists. Download skipped.
+2025-07-02 09:47:29.761 | INFO     | adapters.download_file:download_pdf:86 - Bamlanivimab-etesevimab-covid-19 already marked as not found. Download skipped.
+2025-07-02 09:47:29.762 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Jcovden.pdf already exists. Download skipped.
+2025-07-02 09:47:29.762 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Pemetrexed-sandoz.pdf already exists. Download skipped.
+2025-07-02 09:47:29.762 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Onbevzi.pdf already exists. Download skipped.
+2025-07-02 09:47:29.763 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Memantine-lek.pdf already exists. Download skipped.
+2025-07-02 09:47:29.763 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Ciambra.pdf already exists. Download skipped.
+2025-07-02 09:47:29.763 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Gefitinib-mylan.pdf already exists. Download skipped.
+2025-07-02 09:47:29.763 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Viekirax.pdf already exists. Download skipped.
+2025-07-02 09:47:29.764 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Exviera.pdf already exists. Download skipped.
+2025-07-02 09:47:29.764 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Esmya.pdf already exists. Download skipped.
+2025-07-02 09:47:29.764 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Nyxthracis.pdf already exists. Download skipped.
+2025-07-02 09:47:29.764 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Vaxzevria.pdf already exists. Download skipped.
+2025-07-02 09:47:29.765 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Tremelimumab-astrazeneca.pdf already exists. Download skipped.
+2025-07-02 09:47:29.765 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Lymphoseek.pdf already exists. Download skipped.
+2025-07-02 09:47:29.765 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Tizveni.pdf already exists. Download skipped.
+2025-07-02 09:47:29.765 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Evicel.pdf already exists. Download skipped.
+2025-07-02 09:47:29.766 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Vidprevtyn-beta.pdf already exists. Download skipped.
+2025-07-02 09:47:29.766 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Pemetrexed-krka.pdf already exists. Download skipped.
+2025-07-02 09:47:29.766 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Sustiva.pdf already exists. Download skipped.
+2025-07-02 09:47:29.767 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Pramipexole-accord.pdf already exists. Download skipped.
+2025-07-02 09:47:29.770 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Apealea.pdf already exists. Download skipped.
+2025-07-02 09:47:29.770 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Ivozall.pdf already exists. Download skipped.
+2025-07-02 09:47:29.770 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Covid-19-vaccine-inactivated-adjuvanted-valneva.pdf already exists. Download skipped.
+2025-07-02 09:47:29.770 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Zynrelef.pdf already exists. Download skipped.
+2025-07-02 09:47:29.771 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Rebetol.pdf already exists. Download skipped.
+2025-07-02 09:47:29.771 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Imatinib-koanaa.pdf already exists. Download skipped.
+2025-07-02 09:47:29.771 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Pregabalin-sandoz-gmbh.pdf already exists. Download skipped.
+2025-07-02 09:47:29.771 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Invirase.pdf already exists. Download skipped.
+2025-07-02 09:47:29.772 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Pandemic-influenza-vaccine-h5n1-baxter-ag.pdf already exists. Download skipped.
+2025-07-02 09:47:29.772 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Busilvex.pdf already exists. Download skipped.
+2025-07-02 09:47:29.772 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Lenalidomide-krka-dd.pdf already exists. Download skipped.
+2025-07-02 09:47:29.772 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Nitisinone-mdk.pdf already exists. Download skipped.
+2025-07-02 09:47:29.773 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Pioglitazone-teva.pdf already exists. Download skipped.
+2025-07-02 09:47:29.773 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Neurobloc.pdf already exists. Download skipped.
+2025-07-02 09:47:29.773 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Inpremzia.pdf already exists. Download skipped.
+2025-07-02 09:47:29.773 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Depocyte.pdf already exists. Download skipped.
+2025-07-02 09:47:29.773 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Dasatinib-accord.pdf already exists. Download skipped.
+2025-07-02 09:47:29.774 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Dasatinib-accordpharma.pdf already exists. Download skipped.
+2025-07-02 09:47:29.774 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Lamivudine-zidovudine-teva.pdf already exists. Download skipped.
+2025-07-02 09:47:29.774 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Nevirapine-teva.pdf already exists. Download skipped.
+2025-07-02 09:47:29.774 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Pregabalin-zentiva-ks.pdf already exists. Download skipped.
+2025-07-02 09:47:29.774 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Temozolomide-sandoz.pdf already exists. Download skipped.
+2025-07-02 09:47:29.775 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Hepsera.pdf already exists. Download skipped.
+2025-07-02 09:47:29.775 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Temozolomide-hexal.pdf already exists. Download skipped.
+2025-07-02 09:47:29.775 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Trogarzo.pdf already exists. Download skipped.
+2025-07-02 09:47:29.775 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Introna.pdf already exists. Download skipped.
+2025-07-02 09:47:29.775 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Macugen.pdf already exists. Download skipped.
+2025-07-02 09:47:29.776 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Zynteglo.pdf already exists. Download skipped.
+2025-07-02 09:47:29.776 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Glubrava.pdf already exists. Download skipped.
+2025-07-02 09:47:29.776 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Glidipion.pdf already exists. Download skipped.
+2025-07-02 09:47:29.777 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Glustin.pdf already exists. Download skipped.
+2025-07-02 09:47:29.777 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Zalviso.pdf already exists. Download skipped.
+2025-07-02 09:47:29.777 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Pioglitazone-teva-pharma.pdf already exists. Download skipped.
+2025-07-02 09:47:29.777 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Zynquista.pdf already exists. Download skipped.
+2025-07-02 09:47:29.778 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Thymanax.pdf already exists. Download skipped.
+2025-07-02 09:47:29.778 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Episalvan.pdf already exists. Download skipped.
+2025-07-02 09:47:29.778 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Crixivan.pdf already exists. Download skipped.
+2025-07-02 09:47:29.778 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Senstend.pdf already exists. Download skipped.
+2025-07-02 09:47:29.779 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Imatinib-actavis.pdf already exists. Download skipped.
+2025-07-02 09:47:29.779 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Starlix.pdf already exists. Download skipped.
+2025-07-02 09:47:29.779 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Rasilez-hct.pdf already exists. Download skipped.
+2025-07-02 09:47:29.779 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Docetaxel-zentiva.pdf already exists. Download skipped.
+2025-07-02 09:47:29.780 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Pregabalin-mylan-pharma.pdf already exists. Download skipped.
+2025-07-02 09:47:29.780 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Palonosetron-hospira.pdf already exists. Download skipped.
+2025-07-02 09:47:29.780 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Skysona.pdf already exists. Download skipped.
+2025-07-02 09:47:29.780 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Vivanza.pdf already exists. Download skipped.
+2025-07-02 09:47:29.780 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Leganto.pdf already exists. Download skipped.
+2025-07-02 09:47:29.781 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Staquis.pdf already exists. Download skipped.
+2025-07-02 09:47:29.781 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Atripla.pdf already exists. Download skipped.
+2025-07-02 09:47:29.781 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Ytracis.pdf already exists. Download skipped.
+2025-07-02 09:47:29.781 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Pantoloc-control.pdf already exists. Download skipped.
+2025-07-02 09:47:29.782 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Docetaxel-teva.pdf already exists. Download skipped.
+2025-07-02 09:47:29.782 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Pemetrexed-lilly.pdf already exists. Download skipped.
+2025-07-02 09:47:29.782 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Equidacent.pdf already exists. Download skipped.
+2025-07-02 09:47:29.784 | INFO     | adapters.download_file:download_pdf:86 - Curevacs-covid-19-vaccine-cvncov already marked as not found. Download skipped.
+2025-07-02 09:47:29.786 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Telmisartan-teva.pdf already exists. Download skipped.
+2025-07-02 09:47:29.786 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Ritemvia.pdf already exists. Download skipped.
+2025-07-02 09:47:29.786 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Lumoxiti.pdf already exists. Download skipped.
+2025-07-02 09:47:29.786 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Azacitidine-celgene.pdf already exists. Download skipped.
+2025-07-02 09:47:29.787 | INFO     | adapters.download_file:download_pdf:86 - Pemetrexed-pfizer-pemetrexed-hospira-uk-limited already marked as not found. Download skipped.
+2025-07-02 09:47:29.788 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Portrazza.pdf already exists. Download skipped.
+2025-07-02 09:47:29.788 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Ulipristal-acetate-gedeon-richter.pdf already exists. Download skipped.
+2025-07-02 09:47:29.788 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Ribavirin-teva-pharma-bv.pdf already exists. Download skipped.
+2025-07-02 09:47:29.789 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Ribavirin-teva.pdf already exists. Download skipped.
+2025-07-02 09:47:29.789 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Nodetrip.pdf already exists. Download skipped.
+2025-07-02 09:47:29.790 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Pegintron.pdf already exists. Download skipped.
+2025-07-02 09:47:29.790 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Truberzi.pdf already exists. Download skipped.
+2025-07-02 09:47:29.790 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Lextemy.pdf already exists. Download skipped.
+2025-07-02 09:47:29.791 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Prepandrix.pdf already exists. Download skipped.
+2025-07-02 09:47:29.791 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Enzepi.pdf already exists. Download skipped.
+2025-07-02 09:47:29.792 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Udenyca.pdf already exists. Download skipped.
+2025-07-02 09:47:29.792 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Halimatoz.pdf already exists. Download skipped.
+2025-07-02 09:47:29.792 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Clopidogrel-ratiopharm-gmbh.pdf already exists. Download skipped.
+2025-07-02 09:47:29.793 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Viraferonpeg.pdf already exists. Download skipped.
+2025-07-02 09:47:29.793 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Qutavina.pdf already exists. Download skipped.
+2025-07-02 09:47:29.794 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Sebivo.pdf already exists. Download skipped.
+2025-07-02 09:47:29.794 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Panretin.pdf already exists. Download skipped.
+2025-07-02 09:47:29.795 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Alpivab.pdf already exists. Download skipped.
+2025-07-02 09:47:29.795 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Ribavirin-mylan.pdf already exists. Download skipped.
+2025-07-02 09:47:29.795 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Vepacel.pdf already exists. Download skipped.
+2025-07-02 09:47:29.796 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Zerit.pdf already exists. Download skipped.
+2025-07-02 09:47:29.796 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Qtrilmet.pdf already exists. Download skipped.
+2025-07-02 09:47:29.797 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Duzallo.pdf already exists. Download skipped.
+2025-07-02 09:47:29.797 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Zurampic.pdf already exists. Download skipped.
+2025-07-02 09:47:29.798 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Picato.pdf already exists. Download skipped.
+2025-07-02 09:47:29.798 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Kolbam.pdf already exists. Download skipped.
+2025-07-02 09:47:29.798 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Fertavid.pdf already exists. Download skipped.
+2025-07-02 09:47:29.799 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Helixate-nexgen.pdf already exists. Download skipped.
+2025-07-02 09:47:29.799 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Osseor.pdf already exists. Download skipped.
+2025-07-02 09:47:29.799 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Protelos.pdf already exists. Download skipped.
+2025-07-02 09:47:29.800 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Kromeya.pdf already exists. Download skipped.
+2025-07-02 09:47:29.800 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Xiapex.pdf already exists. Download skipped.
+2025-07-02 09:47:29.800 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Varuby.pdf already exists. Download skipped.
+2025-07-02 09:47:29.800 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Iblias.pdf already exists. Download skipped.
+2025-07-02 09:47:29.801 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Nonafact.pdf already exists. Download skipped.
+2025-07-02 09:47:29.801 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Zalmoxis.pdf already exists. Download skipped.
+2025-07-02 09:47:29.801 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Aerivio-spiromax.pdf already exists. Download skipped.
+2025-07-02 09:47:29.801 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Imatinib-medac.pdf already exists. Download skipped.
+2025-07-02 09:47:29.801 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Taxespira.pdf already exists. Download skipped.
+2025-07-02 09:47:29.802 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Rituzena.pdf already exists. Download skipped.
+2025-07-02 09:47:29.802 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Atryn.pdf already exists. Download skipped.
+2025-07-02 09:47:29.802 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Airexar-spiromax.pdf already exists. Download skipped.
+2025-07-02 09:47:29.802 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Ketek.pdf already exists. Download skipped.
+2025-07-02 09:47:29.803 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Arzerra.pdf already exists. Download skipped.
+2025-07-02 09:47:29.803 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Silgard.pdf already exists. Download skipped.
+2025-07-02 09:47:29.804 | INFO     | adapters.download_file:download_pdf:86 - Vantobra-0 already marked as not found. Download skipped.
+2025-07-02 09:47:29.804 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Altargo.pdf already exists. Download skipped.
+2025-07-02 09:47:29.804 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Topotecan-actavis.pdf already exists. Download skipped.
+2025-07-02 09:47:29.805 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Cyltezo.pdf already exists. Download skipped.
+2025-07-02 09:47:29.805 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Solymbic.pdf already exists. Download skipped.
+2025-07-02 09:47:29.805 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Eperzan.pdf already exists. Download skipped.
+2025-07-02 09:47:29.805 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Lusduna.pdf already exists. Download skipped.
+2025-07-02 09:47:29.806 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Ivabradine-jensonr.pdf already exists. Download skipped.
+2025-07-02 09:47:29.806 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Zoledronic-acid-teva-pharma.pdf already exists. Download skipped.
+2025-07-02 09:47:29.806 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Trobalt.pdf already exists. Download skipped.
+2025-07-02 09:47:29.806 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Ionsys.pdf already exists. Download skipped.
+2025-07-02 09:47:29.806 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Raplixa.pdf already exists. Download skipped.
+2025-07-02 09:47:29.807 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Imatinib-teva-bv.pdf already exists. Download skipped.
+2025-07-02 09:47:29.807 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Angiox.pdf already exists. Download skipped.
+2025-07-02 09:47:29.807 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Intanza.pdf already exists. Download skipped.
+2025-07-02 09:47:29.807 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Numient.pdf already exists. Download skipped.
+2025-07-02 09:47:29.808 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Ariclaim.pdf already exists. Download skipped.
+2025-07-02 09:47:29.808 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Victrelis.pdf already exists. Download skipped.
+2025-07-02 09:47:29.808 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Topotecan-teva.pdf already exists. Download skipped.
+2025-07-02 09:47:29.808 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Zinbryta.pdf already exists. Download skipped.
+2025-07-02 09:47:29.808 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Olysio.pdf already exists. Download skipped.
+2025-07-02 09:47:29.809 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Vibativ.pdf already exists. Download skipped.
+2025-07-02 09:47:29.813 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Insulin-human-winthrop.pdf already exists. Download skipped.
+2025-07-02 09:47:29.814 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Evarrest.pdf already exists. Download skipped.
+2025-07-02 09:47:29.814 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Idflu.pdf already exists. Download skipped.
+2025-07-02 09:47:29.814 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Ristempa.pdf already exists. Download skipped.
+2025-07-02 09:47:29.814 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Leukoscan.pdf already exists. Download skipped.
+2025-07-02 09:47:29.815 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Libertek.pdf already exists. Download skipped.
+2025-07-02 09:47:29.815 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Daliresp.pdf already exists. Download skipped.
+2025-07-02 09:47:29.815 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Clopidogrel-acino.pdf already exists. Download skipped.
+2025-07-02 09:47:29.815 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Optimark.pdf already exists. Download skipped.
+2025-07-02 09:47:29.816 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Prevenar.pdf already exists. Download skipped.
+2025-07-02 09:47:29.816 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Clopidogrel-teva-pharma.pdf already exists. Download skipped.
+2025-07-02 09:47:29.816 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Zontivity.pdf already exists. Download skipped.
+2025-07-02 09:47:29.816 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Removab.pdf already exists. Download skipped.
+2025-07-02 09:47:29.816 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Vitekta.pdf already exists. Download skipped.
+2025-07-02 09:47:29.817 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Imprida.pdf already exists. Download skipped.
+2025-07-02 09:47:29.817 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Clopidogrel-acetylsalicylic-acid-teva.pdf already exists. Download skipped.
+2025-07-02 09:47:29.817 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Unituxin.pdf already exists. Download skipped.
+2025-07-02 09:47:29.817 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Dutrebis.pdf already exists. Download skipped.
+2025-07-02 09:47:29.817 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Rasilamlo.pdf already exists. Download skipped.
+2025-07-02 09:47:29.819 | INFO     | adapters.download_file:download_pdf:86 - Budesonide-formoterol-teva already marked as not found. Download skipped.
+2025-07-02 09:47:29.819 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Budesonide-formoterol-teva-pharma-bv.pdf already exists. Download skipped.
+2025-07-02 09:47:29.819 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Vylaer-spiromax.pdf already exists. Download skipped.
+2025-07-02 09:47:29.819 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Biograstim.pdf already exists. Download skipped.
+2025-07-02 09:47:29.820 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Chondrocelect.pdf already exists. Download skipped.
+2025-07-02 09:47:29.820 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Capecitabine-sun.pdf already exists. Download skipped.
+2025-07-02 09:47:29.820 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Celvapan.pdf already exists. Download skipped.
+2025-07-02 09:47:29.820 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Pantecta-control.pdf already exists. Download skipped.
+2025-07-02 09:47:29.821 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Zoledronic-acid-teva-generics.pdf already exists. Download skipped.
+2025-07-02 09:47:29.821 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Osigraft.pdf already exists. Download skipped.
+2025-07-02 09:47:29.821 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Krystexxa.pdf already exists. Download skipped.
+2025-07-02 09:47:29.821 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Opgenra.pdf already exists. Download skipped.
+2025-07-02 09:47:29.822 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Repso.pdf already exists. Download skipped.
+2025-07-02 09:47:29.822 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Kepivance.pdf already exists. Download skipped.
+2025-07-02 09:47:29.822 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Nuedexta.pdf already exists. Download skipped.
+2025-07-02 09:47:29.822 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Nivolumab-bms.pdf already exists. Download skipped.
+2025-07-02 09:47:29.822 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Sonata.pdf already exists. Download skipped.
+2025-07-02 09:47:29.823 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Rienso.pdf already exists. Download skipped.
+2025-07-02 09:47:29.823 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Clopidogrel-dura.pdf already exists. Download skipped.
+2025-07-02 09:47:29.823 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Provenge.pdf already exists. Download skipped.
+2025-07-02 09:47:29.823 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Bindren.pdf already exists. Download skipped.
+2025-07-02 09:47:29.823 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Pumarix.pdf already exists. Download skipped.
+2025-07-02 09:47:29.824 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Clopidogrel-teva-pharma-bv.pdf already exists. Download skipped.
+2025-07-02 09:47:29.824 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Vistide.pdf already exists. Download skipped.
+2025-07-02 09:47:29.824 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Ipreziv.pdf already exists. Download skipped.
+2025-07-02 09:47:29.825 | INFO     | adapters.download_file:download_pdf:86 - Fluenz-0 already marked as not found. Download skipped.
+2025-07-02 09:47:29.828 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Topotecan-eagle.pdf already exists. Download skipped.
+2025-07-02 09:47:29.828 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Doribax.pdf already exists. Download skipped.
+2025-07-02 09:47:29.828 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Pioglitazone-krka.pdf already exists. Download skipped.
+2025-07-02 09:47:29.828 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Rivastigmine-3m-health-care-ltd.pdf already exists. Download skipped.
+2025-07-02 09:47:29.829 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Clopidogrel-qualimed.pdf already exists. Download skipped.
+2025-07-02 09:47:29.829 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Ioa.pdf already exists. Download skipped.
+2025-07-02 09:47:29.829 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Revasc.pdf already exists. Download skipped.
+2025-07-02 09:47:29.829 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Olanzapine-cipla.pdf already exists. Download skipped.
+2025-07-02 09:47:29.829 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Preotact.pdf already exists. Download skipped.
+2025-07-02 09:47:29.830 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Viracept.pdf already exists. Download skipped.
+2025-07-02 09:47:29.830 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Onduarp.pdf already exists. Download skipped.
+2025-07-02 09:47:29.831 | INFO     | adapters.download_file:download_pdf:86 - Clopidogrel-ratiopharm-0 already marked as not found. Download skipped.
+2025-07-02 09:47:29.831 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Rasitrio.pdf already exists. Download skipped.
+2025-07-02 09:47:29.831 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Sepioglin.pdf already exists. Download skipped.
+2025-07-02 09:47:29.832 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Trevaclyn.pdf already exists. Download skipped.
+2025-07-02 09:47:29.832 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Pelzont.pdf already exists. Download skipped.
+2025-07-02 09:47:29.832 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Tredaptive.pdf already exists. Download skipped.
+2025-07-02 09:47:29.832 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Bondenza.pdf already exists. Download skipped.
+2025-07-02 09:47:29.832 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Possia.pdf already exists. Download skipped.
+2025-07-02 09:47:29.833 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Riprazo.pdf already exists. Download skipped.
+2025-07-02 09:47:29.833 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Duloxetine-boehringer-ingelheim.pdf already exists. Download skipped.
+2025-07-02 09:47:29.833 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Rilonacept-regeneron.pdf already exists. Download skipped.
+2025-07-02 09:47:29.833 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Zerene.pdf already exists. Download skipped.
+2025-07-02 09:47:29.833 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Rivastigmine-teva.pdf already exists. Download skipped.
+2025-07-02 09:47:29.834 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Riprazo-hct.pdf already exists. Download skipped.
+2025-07-02 09:47:29.834 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Sprimeo-hct.pdf already exists. Download skipped.
+2025-07-02 09:47:29.834 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Hexavac.pdf already exists. Download skipped.
+2025-07-02 09:47:29.834 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Regranex.pdf already exists. Download skipped.
+2025-07-02 09:47:29.834 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Mabcampath.pdf already exists. Download skipped.
+2025-07-02 09:47:29.835 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Valtropin.pdf already exists. Download skipped.
+2025-07-02 09:47:29.835 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Teslascan.pdf already exists. Download skipped.
+2025-07-02 09:47:29.835 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Refludan.pdf already exists. Download skipped.
+2025-07-02 09:47:29.835 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Clopidogrel-acino-pharma-gmbh.pdf already exists. Download skipped.
+2025-07-02 09:47:29.835 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Clopidogrel-acino-pharma.pdf already exists. Download skipped.
+2025-07-02 09:47:29.835 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Clopidogrel-hexal.pdf already exists. Download skipped.
+2025-07-02 09:47:29.836 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Sprimeo.pdf already exists. Download skipped.
+2025-07-02 09:47:29.836 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Intrinsa.pdf already exists. Download skipped.
+2025-07-02 09:47:29.836 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Docefrez.pdf already exists. Download skipped.
+2025-07-02 09:47:29.836 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Photobarr.pdf already exists. Download skipped.
+2025-07-02 09:47:29.836 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Livensa.pdf already exists. Download skipped.
+2025-07-02 09:47:29.836 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Prepandemic-influenza-vaccine-h5n1-split-virion-inactivated-adjuvanted-glaxosmithkline-biologicals.pdf already exists. Download skipped.
+2025-07-02 09:47:29.837 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Xigris.pdf already exists. Download skipped.
+2025-07-02 09:47:29.837 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Ablavar.pdf already exists. Download skipped.
+2025-07-02 09:47:29.837 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Clopidogrel-sandoz.pdf already exists. Download skipped.
+2025-07-02 09:47:29.837 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Arepanrix.pdf already exists. Download skipped.
+2025-07-02 09:47:29.838 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Avaglim.pdf already exists. Download skipped.
+2025-07-02 09:47:29.838 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Filgrastim-ratiopharm.pdf already exists. Download skipped.
+2025-07-02 09:47:29.838 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Humenza.pdf already exists. Download skipped.
+2025-07-02 09:47:29.838 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Agenerase.pdf already exists. Download skipped.
+2025-07-02 09:47:29.838 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Enviage.pdf already exists. Download skipped.
+2025-07-02 09:47:29.839 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Onsenal.pdf already exists. Download skipped.
+2025-07-02 09:47:29.839 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Thelin.pdf already exists. Download skipped.
+2025-07-02 09:47:29.839 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Clopidogrel-1a-pharma.pdf already exists. Download skipped.
+2025-07-02 09:47:29.839 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Ionsys.pdf already exists. Download skipped.
+2025-07-02 09:47:29.839 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Immunogam.pdf already exists. Download skipped.
+2025-07-02 09:47:29.840 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Neospect.pdf already exists. Download skipped.
+2025-07-02 09:47:29.840 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Paxene.pdf already exists. Download skipped.
+2025-07-02 09:47:29.845 | INFO     | adapters.download_file:download_pdf:86 - Bextra already marked as not found. Download skipped.
+2025-07-02 09:47:29.845 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Clopidogrel-bms.pdf already exists. Download skipped.
+2025-07-02 09:47:29.846 | INFO     | adapters.download_file:download_pdf:86 - Turvel already marked as not found. Download skipped.
+2025-07-02 09:47:29.847 | INFO     | adapters.download_file:download_pdf:86 - Turvel-iv already marked as not found. Download skipped.
+2025-07-02 09:47:29.848 | INFO     | adapters.download_file:download_pdf:86 - Trovan-iv already marked as not found. Download skipped.
+2025-07-02 09:47:29.849 | INFO     | adapters.download_file:download_pdf:86 - Allex already marked as not found. Download skipped.
+2025-07-02 09:47:29.850 | INFO     | adapters.download_file:download_pdf:86 - Evotopin already marked as not found. Download skipped.
+2025-07-02 09:47:29.851 | INFO     | adapters.download_file:download_pdf:86 - Trovan already marked as not found. Download skipped.
+2025-07-02 09:47:29.852 | INFO     | adapters.download_file:download_pdf:86 - Indimacis-125 already marked as not found. Download skipped.
+2025-07-02 09:47:29.853 | INFO     | adapters.download_file:download_pdf:86 - Rotashield already marked as not found. Download skipped.
+2025-07-02 09:47:29.854 | INFO     | adapters.download_file:download_pdf:86 - Destara already marked as not found. Download skipped.
+2025-07-02 09:47:29.855 | INFO     | adapters.download_file:download_pdf:86 - Tikosyn already marked as not found. Download skipped.
+2025-07-02 09:47:29.856 | INFO     | adapters.download_file:download_pdf:86 - Tecnemab-k1 already marked as not found. Download skipped.
+2025-07-02 09:47:29.856 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Irbesartan-bms.pdf already exists. Download skipped.
+2025-07-02 09:47:29.856 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Irbesartan-hydrochlorothiazide-bms.pdf already exists. Download skipped.
+2025-07-02 09:47:29.857 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Tekturna.pdf already exists. Download skipped.
+2025-07-02 09:47:29.857 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Raptiva.pdf already exists. Download skipped.
+2025-07-02 09:47:29.857 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Parareg.pdf already exists. Download skipped.
+2025-07-02 09:47:29.857 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Dynepo.pdf already exists. Download skipped.
+2025-07-02 09:47:29.858 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Velosulin.pdf already exists. Download skipped.
+2025-07-02 09:47:29.858 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Zenapax.pdf already exists. Download skipped.
+2025-07-02 09:47:29.858 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Zimulti.pdf already exists. Download skipped.
+2025-07-02 09:47:29.858 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Acomplia.pdf already exists. Download skipped.
+2025-07-02 09:47:29.858 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Nespo.pdf already exists. Download skipped.
+2025-07-02 09:47:29.859 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Neupopeg.pdf already exists. Download skipped.
+2025-07-02 09:47:29.859 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Forcaltonin.pdf already exists. Download skipped.
+2025-07-02 09:47:29.863 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Viraferon.pdf already exists. Download skipped.
+2025-07-02 09:47:29.863 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Exubera.pdf already exists. Download skipped.
+2025-07-02 09:47:29.863 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Protopy.pdf already exists. Download skipped.
+2025-07-02 09:47:29.864 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Quintanrix.pdf already exists. Download skipped.
+2025-07-02 09:47:29.864 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Quixidar.pdf already exists. Download skipped.
+2025-07-02 09:47:29.864 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Levviax.pdf already exists. Download skipped.
+2025-07-02 09:47:29.865 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Monotard.pdf already exists. Download skipped.
+2025-07-02 09:47:29.865 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Trudexa.pdf already exists. Download skipped.
+2025-07-02 09:47:29.865 | INFO     | adapters.download_file:download_pdf:79 - The file ema_withdrawn_rcp/Ultratard.pdf already exists. Download skipped.
+2025-07-02 09:47:29.866 | INFO     | adapters.download_file:download_pdf:86 - Fortovase already marked as not found. Download skipped.
+2025-07-02 09:47:29.867 | INFO     | adapters.download_file:download_pdf:86 - Infergen already marked as not found. Download skipped.
+2025-07-02 09:47:29.868 | INFO     | adapters.download_file:download_pdf:86 - Uprima already marked as not found. Download skipped.
+2025-07-02 09:47:29.869 | INFO     | adapters.download_file:download_pdf:86 - Daquiran already marked as not found. Download skipped.
+2025-07-02 09:47:29.870 | INFO     | adapters.download_file:download_pdf:86 - Theryttrex already marked as not found. Download skipped.
+2025-07-02 09:47:29.871 | INFO     | adapters.download_file:download_pdf:86 - Tenecteplase-boehringer-ingelheim-pharma-gmbh-co-kg already marked as not found. Download skipped.
+2025-07-02 09:47:29.872 | INFO     | adapters.download_file:download_pdf:86 - Cea-scan already marked as not found. Download skipped.
+2025-07-02 09:47:29.873 | INFO     | adapters.download_file:download_pdf:86 - Rayzon already marked as not found. Download skipped.
+2025-07-02 09:47:29.875 | INFO     | adapters.download_file:download_pdf:86 - Patrex already marked as not found. Download skipped.
+2025-07-02 09:47:29.879 | INFO     | adapters.download_file:download_pdf:86 - Valdyn already marked as not found. Download skipped.
+2025-07-02 09:47:29.880 | INFO     | adapters.download_file:download_pdf:86 - Infanrix-hepb already marked as not found. Download skipped.
+2025-07-02 09:47:29.881 | INFO     | adapters.download_file:download_pdf:86 - Venvia already marked as not found. Download skipped.
+2025-07-02 09:47:29.882 | INFO     | adapters.download_file:download_pdf:86 - Nyracta already marked as not found. Download skipped.
+2025-07-02 09:47:29.883 | INFO     | adapters.download_file:download_pdf:86 - Taluvian already marked as not found. Download skipped.
+2025-07-02 09:47:29.884 | INFO     | adapters.download_file:download_pdf:86 - Ixense already marked as not found. Download skipped.
+2025-07-02 09:47:29.885 | INFO     | adapters.download_file:download_pdf:86 - Xapit already marked as not found. Download skipped.
+2025-07-02 09:47:29.886 | INFO     | adapters.download_file:download_pdf:86 - Valdyn already marked as not found. Download skipped.
+2025-07-02 09:47:29.887 | INFO     | adapters.download_file:download_pdf:86 - Opulis already marked as not found. Download skipped.
+2025-07-02 09:47:29.888 | INFO     | adapters.download_file:download_pdf:86 - Cotronak already marked as not found. Download skipped.
+2025-07-02 09:47:29.889 | INFO     | adapters.download_file:download_pdf:86 - Humaspect already marked as not found. Download skipped.
+2025-07-02 09:47:29.890 | INFO     | adapters.download_file:download_pdf:86 - Olansek already marked as not found. Download skipped.
+2025-07-02 09:47:29.891 | INFO     | adapters.download_file:download_pdf:86 - Hepacare already marked as not found. Download skipped.
+2025-07-02 09:47:29.894 | INFO     | adapters.download_file:download_pdf:86 - Vitravene already marked as not found. Download skipped.
+2025-07-02 09:47:29.896 | INFO     | adapters.download_file:download_pdf:86 - Zartra already marked as not found. Download skipped.
+2025-07-02 09:47:29.897 | INFO     | adapters.download_file:download_pdf:86 - Triacelluvax already marked as not found. Download skipped.
+2025-07-02 09:47:29.898 | INFO     | adapters.download_file:download_pdf:86 - Orlaam already marked as not found. Download skipped.
+2025-07-02 09:47:29.899 | INFO     | adapters.download_file:download_pdf:86 - Vitrasert-implant already marked as not found. Download skipped.
+2025-07-02 09:47:29.900 | INFO     | adapters.download_file:download_pdf:86 - Liprolog-0 already marked as not found. Download skipped.
+2025-07-02 09:47:29.901 | INFO     | adapters.download_file:download_pdf:86 - Echogen already marked as not found. Download skipped.
+2025-07-02 09:47:29.902 | INFO     | adapters.download_file:download_pdf:86 - Ecokinase already marked as not found. Download skipped.
+2025-07-02 09:47:29.903 | INFO     | adapters.download_file:download_pdf:86 - Primavax already marked as not found. Download skipped.
+2025-07-02 09:47:29.904 | INFO     | adapters.download_file:download_pdf:86 - Pylori-chek already marked as not found. Download skipped.
+2025-07-02 09:47:29.904 | INFO     | adapters.download_file:retry_failed_downloads:149 - No failed_urls.csv file found. No downloads to retry.
+2025-07-02 09:47:29.905 | INFO     | __main__:<module>:63 - All tasks completed successfully.
+2025-07-02 09:47:29.905 | INFO     | __main__:<module>:66 - Removing authorised RCP files that are now withdrawn...
