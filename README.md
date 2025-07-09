@@ -28,16 +28,41 @@ See the requirements.txt file to install all the necessary dependencies for prop
 ---
 
 ### 2. Initial launch 
+- The first run takes about **5 hours** and downloads **all RCPs**.
+- Open a command prompt and run:
 
+/c "cd /d {path_to_project} && python app\main.py"
 
---- 
+**Example:**
+/c "cd /d C:\Users\rouajul\Desktop\ema_rcp-main && python app\main.py"
 
-### 3. Scheduled daily execution 
-
-
+- This command executes `main.py`, the central orchestrator of the project.
+- ✅ Check the terminal for any **errors**.
+- Logs are also saved in the `log` folder.
 
 ---
 
+### 3. Scheduled daily execution 
+To update and download new RCPs **daily**:
+
+1. **Open Windows Task Scheduler.**
+2. **Create a new task** and give it a meaningful name.
+3. Under the **General tab**:
+ - Ideally check:
+   - `Run whether user is logged on or not`
+   - `Run with highest privileges`
+ - If installed on a CHU Pharmacovigilance server, the task will run even if the installer's PC is off.
+4. Under the **Triggers tab**:
+ - Click “New” and schedule the task (e.g., every morning at **9:00 AM**).
+5. Under the **Actions tab**:
+ - Click “New”
+ - Action: `Start a program`
+ - Program/script: `cmd`
+ - Add arguments:  
+   ```
+   /c "cd /d {path_to_project} && python app\main.py"
+   ```
+---
 
 ## 🔧 **Key Functions to Remember**
 
