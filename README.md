@@ -78,5 +78,5 @@ To update and download new RCPs **daily**:
 ## **Authors**
 
 Rouanet Julie  
-5th year pharmacy student, industrial track, University of Bordeaux  
+5th year industrial pharmacy student, University of Bordeaux  
 julierouanet5@gmail.com
