@@ -1,20 +1,4 @@
 Name,Revision_nb,Status
-Revlimid,53,Authorised
-Xbryk,2,Authorised
-Fymskina,4,Authorised
-Avtozma,3,Authorised
-Temozolomide-sun,21,Authorised
-Plegridy,26,Authorised
-Arikayce-liposomal,3,Authorised
-Evotaz,15,Authorised
-Hetlioz,9,Authorised
-Toujeo,37,Authorised
-Duvyzat,0,Authorised
-Braftovi,16,Authorised
-Benlysta,38,Authorised
-Ozempic,16,Authorised
-Exjade,54,Authorised
-Ituxredi,1,Authorised
 Qdenga,4,Authorised
 Gohibic,1,Authorised
 Ritonavir-viatris,18,Authorised
@@ -23,6 +7,7 @@ Filgrastim-hexal,26,Authorised
 Zarzio,27,Authorised
 Voydeya,2,Authorised
 Rybelsus,14,Authorised
+Ozempic,16,Authorised
 Obgemsa,2,Authorised
 Holoclar,13,Authorised
 Erleada,17,Authorised
@@ -118,6 +103,7 @@ Yorvipath,5,Authorised
 Axura,29,Authorised
 Amlodipine-valsartan-mylan,16,Authorised
 Colobreathe,19,Authorised
+Avtozma,2,Authorised
 Enjaymo,7,Authorised
 Rizmoic,12,Authorised
 Tysabri,48,Authorised
@@ -157,8 +143,10 @@ Tachosil,27,Authorised
 Arexvy,6,Authorised
 Xevudy,22,Authorised
 Lumeblue,5,Authorised
+Xbryk,1,Authorised
 Spevigo,2,Authorised
 Yargesa,6,Authorised
+Benlysta,37,Authorised
 Imvanex,30,Authorised
 Pyzchiva,9,Authorised
 Rivastigmine-actavis,21,Authorised
@@ -297,6 +285,7 @@ Orencia,41,Authorised
 Adempas,15,Authorised
 Briviact,25,Authorised
 Beovu,16,Authorised
+Fymskina,3,Authorised
 Flixabi,30,Authorised
 Buprenorphine-neuraxpharm,1,Authorised
 Ogluo,7,Authorised
@@ -735,6 +724,7 @@ Repaglinide-teva,10,Authorised
 Aprovel,50,Authorised
 Armisarte,15,Authorised
 Kinpeygo,11,Authorised
+Ituxredi,0,Authorised
 Kesimpta,12,Authorised
 Stivarga,23,Authorised
 Lantus,42,Authorised
@@ -822,6 +812,7 @@ Adynovi,14,Authorised
 Kineret,36,Authorised
 Venclyxto,20,Authorised
 Pheburane,13,Authorised
+Plegridy,25,Authorised
 Fampyra,18,Authorised
 Pepaxti,5,Authorised
 Selincro,14,Authorised
@@ -876,6 +867,7 @@ Vizimpro,4,Authorised
 Tyverb,37,Authorised
 Fluad,0,Authorised
 Naglazyme,20,Authorised
+Exjade,53,Authorised
 Vedrop,14,Authorised
 Riltrava-aerosphere,4,Authorised
 Trixeo-aerosphere,6,Authorised
@@ -896,6 +888,7 @@ Corlentor,28,Authorised
 Dectova,6,Authorised
 Juluca,15,Authorised
 Aubagio,29,Authorised
+Braftovi,15,Authorised
 Mektovi,11,Authorised
 Tivicay,35,Authorised
 Triumeq,35,Authorised
@@ -1083,6 +1076,7 @@ Hizentra,25,Authorised
 Carmustine-medac,11,Authorised
 Jevtana,24,Authorised
 Pramipexole-teva,24,Authorised
+Toujeo,36,Authorised
 Saphnelo,7,Authorised
 Azacitidine-kabi,1,Authorised
 Tevagrastim,19,Authorised
@@ -1199,7 +1193,8 @@ Aripiprazole-mylan-pharma,18,Authorised
 Krazati,0,Authorised
 Fulvestrant-mylan,6,Authorised
 Tepmetko,3,Authorised
-Apremilast-accord,1,Authorised
+Apremilast-accord,0,Authorised
+Temozolomide-sun,20,Authorised
 Temozolomide-teva,22,Authorised
 Ryzneuta,1,Authorised
 Thalidomide-lipomed,1,Authorised
@@ -1275,6 +1270,7 @@ Lokelma,10,Authorised
 Azacitidine-betapharm,6,Authorised
 Humalog,35,Authorised
 Ziagen,49,Authorised
+Revlimid,52,Authorised
 Natpar,17,Authorised
 Ivabradine-anpharm,10,Authorised
 Procoralan,22,Authorised
@@ -1333,6 +1329,7 @@ Nexpovio,8,Authorised
 Tolvaptan-accord,0,Authorised
 Vpriv,20,Authorised
 Fluenz-tetra,24,Authorised
+Arikayce-liposomal,2,Authorised
 Sogroya,2,Authorised
 Vipidia,10,Authorised
 Nutropinaq,20,Authorised
@@ -1365,6 +1362,7 @@ Fendrix,12,Authorised
 Xenical,25,Authorised
 Verkazia,7,Authorised
 Stocrin,49,Authorised
+Evotaz,14,Authorised
 Lamivudine-teva-pharma-bv,19,Authorised
 Ceplene,12,Authorised
 Emtriva,33,Authorised
@@ -1407,6 +1405,7 @@ Genvoya,27,Authorised
 Adasuve,14,Authorised
 Exparel-liposomal,1,Authorised
 Waylivra,6,Authorised
+Hetlioz,9,Authorised
 Firmagon,19,Authorised
 Replagal,28,Authorised
 Incresync,13,Authorised
