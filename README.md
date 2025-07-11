@@ -51,7 +51,6 @@ To update and download new RCPs **daily**:
  - Ideally check:
    - `Run whether user is logged on or not`
    - `Run with highest privileges`
- - If installed on a CHU Pharmacovigilance server, the task will run even if the installer's PC is off.
 4. Under the **Triggers tab**:
  - Click “New” and schedule the task (e.g., every morning at **9:00 AM**).
 5. Under the **Actions tab**:
