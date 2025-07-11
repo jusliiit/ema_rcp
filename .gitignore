@@ -1,0 +1,20 @@
+# Ignorer les fichiers PDF
+*.pdf
+
+# Ignorer les fichiers de log
+*.log
+
+# Ignorer les fichiers excels
+*.xlsx
+
+# Ignorer les fichier json
+*.json
+
+# Ignorer les fichiers csv 
+*.csv
+
+archives_authorised/
+archives_withdrawn/
+ema_authorised_rcp/
+ema_withdrawn_rcp/
+log/
