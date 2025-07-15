@@ -13,6 +13,9 @@
 # Ignorer les fichiers csv 
 *.csv
 
+#Ignorer les fichiers pycache 
+__pycache__/
+
 archives_authorised/
 archives_withdrawn/
 ema_authorised_rcp/
